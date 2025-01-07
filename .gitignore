@@ -1,0 +1,14 @@
+# Ignore the nbproject folder
+/nbproject/
+/nbproject-private/
+
+# Ignore file created by the IDE
+/build/
+/dist/
+
+# Ignore logs and temporaly files
+*.log
+*.tmp
+
+# Ignore config files specifictly of the IDE
+*.properties
