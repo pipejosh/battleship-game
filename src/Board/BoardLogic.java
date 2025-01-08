@@ -12,6 +12,4 @@ public class BoardLogic
         
         AIGrid.setTitle("AI GRID");
     }
-
-
 }

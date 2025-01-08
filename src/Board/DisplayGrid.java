@@ -10,8 +10,8 @@ public class DisplayGrid extends JFrame
 
     public DisplayGrid() 
     {
-        initFrame();
         initButtons();
+        initFrame();
     }
     
     public void initFrame()
