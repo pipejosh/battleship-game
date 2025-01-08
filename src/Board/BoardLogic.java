@@ -2,48 +2,18 @@ package Board;
 
 public class BoardLogic 
 { 
+    static Board playerBoard = new Board();
+    static Board aiBoard = new Board();
 
-
-    static DisplayGrid playerGrid = new DisplayGrid();
-    static DisplayGrid AIGrid = new DisplayGrid();
-    
-    public int turns = 0;
     public static void main(String[] args) 
     {
-        playerGrid.setTitle("PLAYER GRID");
+        DisplayGrid displayGrid = new DisplayGrid(playerBoard);
 
-        AIGrid.setTitle("AI GRID");
+        displayGrid.setTitle("TEST");
     }
 
-    public void determineTurn()
+    public void buttonAction(int row, int column)
     {
-        int currentTurn = turns % 2;
-
-        switch (currentTurn)
-        {
-            case 0 -> playerTurn();
-            case 1 -> AITurn();
-        }
-    }
-
-    public void playerTurn()
-    {
-        System.out.println("PLAYER TURN");
-        playerGrid.deactivateButtons();
-        AIGrid.activateButtons();
-    }
-
-    public void AITurn()
-    {
-        System.out.println("AI TURN");
-        AIGrid.deactivateButtons();
-        playerGrid.activateButtons();
-    }
-
-    public void addTurns()
-    {
-        System.out.println("CURRENT TURNS " + turns);
-        determineTurn();
-        turns += 1;
+        playerBoard.setBoardPosition(row, column, 2);    
     }
 }

@@ -6,12 +6,14 @@ import java.awt.*;
 public class DisplayGrid extends JFrame 
 {
     public JButton[][] buttonsInGrid = new JButton[10][10];
-    public boolean buttonClicked = false;
-    Board board = new Board();
+    int[][] currentBoard;
+    Board board;
     BoardLogic logic = new BoardLogic();
 
-    public DisplayGrid() 
+    public DisplayGrid(Board board) 
     {
+        this.board = board;
+        this.currentBoard = board.getBoard();
         initButtons();
         initFrame();
     }
@@ -22,6 +24,7 @@ public class DisplayGrid extends JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
+        updateGUI();
     }
 
     public void initButtons()
@@ -53,39 +56,29 @@ public class DisplayGrid extends JFrame
             {
                 final int row = i;
                 final int col = j;
-                buttonsInGrid[row][col].addActionListener(e -> 
-                {
-                    buttonAction(row, col);
-                });
+                buttonsInGrid[row][col].addActionListener(e -> {logic.buttonAction(row, col); updateGUI();});
             }
         }
     }
 
     public void updateGUI()
     {
-        int[][] currentBoard = board.getPlayerBoard();
-
         for (int i = 0; i < board.getSize(); i++)
         {
             for (int j = 0; j < board.getSize(); j++)
             {
                 switch (currentBoard[i][j])
                 {
-                    case 1 -> buttonsInGrid[i][j].setBackground(Color.ORANGE);
-                    case 2 -> buttonsInGrid[i][j].setBackground(Color.GREEN);
+                    case 0 -> buttonsInGrid[i][j].setBackground(Color.BLUE);
+                    case 1 -> buttonsInGrid[i][j].setBackground(Color.GREEN);
+                    case 2 -> buttonsInGrid[i][j].setBackground(Color.ORANGE);
+                    case 3 -> buttonsInGrid[i][j].setBackground(Color.RED);
+                    case 4 -> buttonsInGrid[i][j].setBackground(Color.YELLOW);
                     default -> buttonsInGrid[i][j].setBackground(Color.BLACK);
                 }
             } 
-        }
-    }
-
-    public void buttonAction(int x, int y)
-    {
-        logic.addTurns();
-        board.setPlayerBoardPosition(x, y, 1);
-        buttonsInGrid[x][y].setEnabled(false);
-        updateGUI();
-    }
+        }   
+    } 
 
     public void deactivateButtons()
     {
