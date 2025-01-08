@@ -6,12 +6,13 @@ public class Board
     private final int[][] playerBoard;
     private final int[][] AIBoard;
 
-    /*  BOARD ARRAY CAN CONTAIN 5 VALUES; 
+    /*  BOARD ARRAY CAN CONTAIN 6 VALUES; 
         0: DEFAULT / NOT DISCOVER
-        1: USER || AI SHIP 
-        2: USER || AI SHOOT
-        3: USER || AI SHIP SHOT
-        4: USER || AI SHIP DISTROYED
+        1: CLICKED BUTTON
+        2: USER || AI SHIP 
+        3: USER || AI SHOOT
+        4: USER || AI SHIP SHOT
+        5: USER || AI SHIP DISTROYED
     */
     
     public Board() 

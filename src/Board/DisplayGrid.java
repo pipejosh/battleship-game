@@ -6,7 +6,9 @@ import java.awt.*;
 public class DisplayGrid extends JFrame 
 {
     public JButton[][] buttonsInGrid = new JButton[10][10];
+    public boolean buttonClicked = false;
     Board board = new Board();
+    BoardLogic logic = new BoardLogic();
 
     public DisplayGrid() 
     {
@@ -81,11 +83,29 @@ public class DisplayGrid extends JFrame
     {
         board.setPlayerBoardPosition(x, y, 1);
         buttonsInGrid[x][y].setEnabled(false);
+        logic.addTurns();
         updateGUI();
     }
 
+    public void deactivateButtons()
+    {
+        for (int i = 0; i < board.getSize(); i++) 
+        {
+            for (int j = 0; j < board.getSize(); j++) 
+            {
+                buttonsInGrid[i][j].setEnabled(false);     
+            } 
+        }
+    }
 
-
-
-
+    public void activateButtons()
+    {
+        for (int i = 0; i < board.getSize(); i++) 
+        {
+            for (int j = 0; j < board.getSize(); j++) 
+            {
+                buttonsInGrid[i][j].setEnabled(true);     
+            } 
+        }
+    }
 }
