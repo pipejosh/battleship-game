@@ -28,19 +28,22 @@ public class BoardLogic
 
     public void playerTurn()
     {
+        System.out.println("PLAYER TURN");
         playerGrid.deactivateButtons();
         AIGrid.activateButtons();
     }
 
     public void AITurn()
     {
+        System.out.println("AI TURN");
         AIGrid.deactivateButtons();
         playerGrid.activateButtons();
     }
+
     public void addTurns()
     {
-        turns += 1;
-
+        System.out.println("CURRENT TURNS " + turns);
         determineTurn();
+        turns += 1;
     }
 }

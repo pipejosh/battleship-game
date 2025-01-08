@@ -81,9 +81,9 @@ public class DisplayGrid extends JFrame
 
     public void buttonAction(int x, int y)
     {
+        logic.addTurns();
         board.setPlayerBoardPosition(x, y, 1);
         buttonsInGrid[x][y].setEnabled(false);
-        logic.addTurns();
         updateGUI();
     }
 
