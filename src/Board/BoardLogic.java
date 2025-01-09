@@ -3,7 +3,7 @@ package Board;
 public class BoardLogic 
 { 
     private final DisplayGrid playerGrid;
-    private final DisplayGrid aiGrid;
+    private final DisplayGrid playerShips;
     private final Board playerBoard;
     private final Board aiBoard;
 
@@ -12,22 +12,16 @@ public class BoardLogic
         playerBoard = new Board();
         aiBoard = new Board();
 
-        playerGrid = new DisplayGrid(playerBoard, this);
-        aiGrid = new DisplayGrid(aiBoard, this);
+        playerGrid = new DisplayGrid(aiBoard, this, DisplayGridMode.ATTACK);
+        playerShips = new DisplayGrid(playerBoard, null, DisplayGridMode.VIEW);
 
         changeTitles();
-        testShot();
-    }
-
-    public void testShot()
-    {
-        playerBoard.setBoardPosition(5, 5, 1);
     }
 
     public void changeTitles() 
     {
-        playerGrid.setTitle("Player Grid");
-        aiGrid.setTitle("AI Grid");
+        playerGrid.setTitle("Player atack Grid");
+        playerShips.setTitle("Player ships grid");
     }
 
     public static void main(String[] args) 
