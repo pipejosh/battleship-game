@@ -4,7 +4,7 @@ package Board;
 public class Board 
 {
     private final int size;
-    private final int[][] board; 
+    private final String[][] board; 
 
     /*  BOARD ARRAY CAN CONTAIN 6 VALUES; 
         0: empty space
@@ -18,7 +18,7 @@ public class Board
     public Board() 
     {
         this.size = 10;  // Tamaño fijo para este ejemplo
-        this.board = new int[size][size];
+        this.board = new String[size][size];
     }
     
     public int getSize() 
@@ -26,12 +26,12 @@ public class Board
         return size;
     }
 
-    public int[][] getBoard() 
+    public String[][] getBoard() 
     {
         return board;
     }
 
-    public void setBoardPosition(int x, int y, int value) 
+    public void setBoardPosition(int x, int y, String value) 
     {
         if (isInBounds(x, y)) 
         {
@@ -42,5 +42,10 @@ public class Board
     public boolean isInBounds(int x, int y) 
     {
         return x >= 0 && x < size && y >= 0 && y < size;
+    }
+
+    public void setShips(int x, int y)
+    {
+        setBoardPosition(x, y, "SHIP");
     }
 }

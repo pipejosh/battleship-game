@@ -14,7 +14,7 @@ public class DisplayGrid extends JFrame
     private DisplayGridMode currentMode;
     
     public JButton[][] buttonsInGrid = new JButton[10][10];
-    public int[][] currentBoard;
+    public String[][] currentBoard;
     public Board board;
     public BoardLogic logic;
 
@@ -141,11 +141,11 @@ public class DisplayGrid extends JFrame
             {
                 switch (currentBoard[i][j])
                 {
-                    case 0 -> buttonsInGrid[i][j].setBackground(DEFAULTCOLOR);
-                    case 1 -> buttonsInGrid[i][j].setBackground(SHIPCOLOR);
-                    case 2 -> buttonsInGrid[i][j].setBackground(CLICKEDCOLOR);
-                    case 3 -> buttonsInGrid[i][j].setBackground(MISSCOLOR);
-                    case 4 -> buttonsInGrid[i][j].setBackground(HITCOLOR);
+                    case "b" -> buttonsInGrid[i][j].setBackground(DEFAULTCOLOR);
+                    case "a" -> buttonsInGrid[i][j].setBackground(SHIPCOLOR);
+                    case "2" -> buttonsInGrid[i][j].setBackground(CLICKEDCOLOR);
+                    case "3" -> buttonsInGrid[i][j].setBackground(MISSCOLOR);
+                    case "4" -> buttonsInGrid[i][j].setBackground(HITCOLOR);
                     default -> buttonsInGrid[i][j].setBackground(UNKNOWNCOLOR);
                 }
             } 
