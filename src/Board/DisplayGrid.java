@@ -8,8 +8,9 @@ public class DisplayGrid extends JFrame
     private static final Color DEFAULTCOLOR = Color.BLUE;
     private static final Color CLICKEDCOLOR = Color.ORANGE;
     private static final Color SHIPCOLOR = Color.GREEN;
-    private static final Color MISSCOLOR = Color.RED;
+    private static final Color MISSCOLOR = Color.WHITE;
     private static final Color HITCOLOR = Color.YELLOW;
+    private static final Color DESTROYCOLOR = Color.RED;
     private static final Color UNKNOWNCOLOR = Color.BLACK;
     private DisplayGridMode currentMode;
     
@@ -143,11 +144,12 @@ public class DisplayGrid extends JFrame
             {
                 switch (currentBoard[i][j])
                 {
-                    case "b" -> buttonsInGrid[i][j].setBackground(DEFAULTCOLOR);
-                    case "a" -> buttonsInGrid[i][j].setBackground(SHIPCOLOR);
-                    case "2" -> buttonsInGrid[i][j].setBackground(CLICKEDCOLOR);
-                    case "3" -> buttonsInGrid[i][j].setBackground(MISSCOLOR);
-                    case "4" -> buttonsInGrid[i][j].setBackground(HITCOLOR);
+                    case "DEFAULT" -> buttonsInGrid[i][j].setBackground(DEFAULTCOLOR);
+                    case "SHIP" -> buttonsInGrid[i][j].setBackground(SHIPCOLOR);
+                    case "CLICKED" -> buttonsInGrid[i][j].setBackground(CLICKEDCOLOR);
+                    case "MISS" -> buttonsInGrid[i][j].setBackground(MISSCOLOR);
+                    case "HIT" -> buttonsInGrid[i][j].setBackground(HITCOLOR);
+                    case "DESTROYED" ->  buttonsInGrid[i][j].setBackground(DESTROYCOLOR);
                     default -> buttonsInGrid[i][j].setBackground(UNKNOWNCOLOR);
                 }
             } 
