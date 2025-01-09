@@ -125,6 +125,8 @@ public class DisplayGrid extends JFrame
 
     private void placeShipsMode()
     {
+        JButton isVerticalButton = new JButton();
+        add(isVerticalButton);
         System.out.println("PLACE SHIPS MODE ACTIVATE");
     }
 
