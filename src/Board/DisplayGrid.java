@@ -23,6 +23,7 @@ public class DisplayGrid extends JFrame
         this.board = board;
         this.currentBoard = board.getBoard();
         this.logic = logic;
+        this.currentMode = initialMode;
         initButtons();
         initFrame();
         determineGamemode();
