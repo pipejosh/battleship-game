@@ -5,15 +5,23 @@ import java.awt.*;
 
 public class DisplayGrid extends JFrame 
 {
-    public JButton[][] buttonsInGrid = new JButton[10][10];
-    int[][] currentBoard;
-    Board board;
-    BoardLogic logic = new BoardLogic();
+    private static final Color DEFAULTCOLOR = Color.BLUE;
+    private static final Color CLICKEDCOLOR = Color.ORANGE;
+    private static final Color SHIPCOLOR = Color.GREEN;
+    private static final Color MISSCOLOR = Color.RED;
+    private static final Color HITCOLOR = Color.YELLOW;
+    private static final Color UNKNOWNCOLOR = Color.BLACK;
 
-    public DisplayGrid(Board board) 
+    public JButton[][] buttonsInGrid = new JButton[10][10];
+    public int[][] currentBoard;
+    public Board board;
+    public BoardLogic logic;
+
+    public DisplayGrid(Board board, BoardLogic logic) 
     {
         this.board = board;
         this.currentBoard = board.getBoard();
+        this.logic = logic;
         initButtons();
         initFrame();
     }
@@ -40,10 +48,11 @@ public class DisplayGrid extends JFrame
                 buttonsInGrid[i][j] = new JButton();
                 add(buttonsInGrid[i][j]);
                 buttonsInGrid[i][j].setName("btn" + counter);
-                System.out.println(buttonsInGrid[i][j].getName());
                 counter ++;
             }
         }
+
+        System.out.println("BUTTONS CORRECTLY INITIALIZED");
 
         addButtonsActionListener();
     }
@@ -56,9 +65,16 @@ public class DisplayGrid extends JFrame
             {
                 final int row = i;
                 final int col = j;
-                buttonsInGrid[row][col].addActionListener(e -> {logic.buttonAction(row, col); updateGUI();});
+                buttonsInGrid[row][col].addActionListener(e -> {buttonsAction(row, col);});
             }
         }
+    }
+
+    public void buttonsAction(int x, int y)
+    {
+        board.shot(x, y);
+
+        updateGUI();
     }
 
     public void updateGUI()
@@ -69,12 +85,12 @@ public class DisplayGrid extends JFrame
             {
                 switch (currentBoard[i][j])
                 {
-                    case 0 -> buttonsInGrid[i][j].setBackground(Color.BLUE);
-                    case 1 -> buttonsInGrid[i][j].setBackground(Color.GREEN);
-                    case 2 -> buttonsInGrid[i][j].setBackground(Color.ORANGE);
-                    case 3 -> buttonsInGrid[i][j].setBackground(Color.RED);
-                    case 4 -> buttonsInGrid[i][j].setBackground(Color.YELLOW);
-                    default -> buttonsInGrid[i][j].setBackground(Color.BLACK);
+                    case 0 -> buttonsInGrid[i][j].setBackground(DEFAULTCOLOR);
+                    case 1 -> buttonsInGrid[i][j].setBackground(SHIPCOLOR);
+                    case 2 -> buttonsInGrid[i][j].setBackground(CLICKEDCOLOR);
+                    case 3 -> buttonsInGrid[i][j].setBackground(MISSCOLOR);
+                    case 4 -> buttonsInGrid[i][j].setBackground(HITCOLOR);
+                    default -> buttonsInGrid[i][j].setBackground(UNKNOWNCOLOR);
                 }
             } 
         }   
