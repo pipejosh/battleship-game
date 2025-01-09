@@ -12,8 +12,8 @@ public class BoardLogic
         playerBoard = new Board();
         aiBoard = new Board();
 
-        playerGrid = new DisplayGrid(aiBoard, this, DisplayGridMode.ATTACK);
-        playerShips = new DisplayGrid(playerBoard, null, DisplayGridMode.VIEW);
+        playerGrid = new DisplayGrid(aiBoard, this);
+        playerShips = new DisplayGrid(playerBoard, null);
 
         changeTitles();
     }
