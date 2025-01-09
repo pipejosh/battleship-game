@@ -3,7 +3,7 @@
 # /nbproject-private/
 
 # Ignore file created by the IDE
-# /build/
+/build/
 # /dist/
 
 # Ignore logs and temporaly files
