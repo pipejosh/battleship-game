@@ -26,17 +26,65 @@ public class MainMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        ConfigButton = new javax.swing.JButton();
+        PlayButton = new javax.swing.JButton();
+        NameLabel = new javax.swing.JLabel();
+        ExitButton1 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 153, 204));
+        setPreferredSize(new java.awt.Dimension(500, 500));
+        setSize(new java.awt.Dimension(500, 500));
+
+        ConfigButton.setBackground(new java.awt.Color(137, 87, 64));
+        ConfigButton.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
+        ConfigButton.setText("Config");
+
+        PlayButton.setBackground(new java.awt.Color(137, 87, 64));
+        PlayButton.setFont(new java.awt.Font("Impact", 0, 36)); // NOI18N
+        PlayButton.setText("Play");
+
+        NameLabel.setFont(new java.awt.Font("Impact", 0, 48)); // NOI18N
+        NameLabel.setText("Battleship Game");
+
+        ExitButton1.setBackground(new java.awt.Color(137, 87, 64));
+        ExitButton1.setFont(new java.awt.Font("Impact", 0, 36)); // NOI18N
+        ExitButton1.setText("Exit");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(84, 84, 84)
+                                .addComponent(NameLabel))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(201, 201, 201)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ExitButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(PlayButton))))
+                        .addGap(0, 85, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(ConfigButton)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addComponent(NameLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
+                .addComponent(PlayButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ExitButton1)
+                .addGap(69, 69, 69)
+                .addComponent(ConfigButton)
+                .addContainerGap())
         );
 
         pack();
@@ -78,5 +126,9 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ConfigButton;
+    private javax.swing.JButton ExitButton1;
+    private javax.swing.JLabel NameLabel;
+    private javax.swing.JButton PlayButton;
     // End of variables declaration//GEN-END:variables
 }
