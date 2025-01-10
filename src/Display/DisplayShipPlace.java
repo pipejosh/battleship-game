@@ -58,8 +58,8 @@ public class DisplayShipPlace extends JFrame
         pnlControl.add(lblCurrentShip);
         pnlControl.add(lblOrientation);
         
-        setShipsLeftText();
         setCurrentShipText();
+        setShipsLeftText();
         setOrientationText();
         
         JPanel pnlBoard = new JPanel(new GridLayout(board.getSize(), board.getSize()));
