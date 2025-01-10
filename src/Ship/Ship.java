@@ -1,38 +1,81 @@
 package Ship;
 
-import Board.Board;
 
-public class Ship 
-{
-    public int shipSize = 0;    
-    public boolean isVertical;
-    public int shipCounts = 0;
+public class Ship {
 
-    
-    private Board currentBoard;
-    private String[][] board;
+    private final int shipSize;
+    private int shipHealth;
+    private boolean isDestroyed;
+    private final ShipType shipType;
 
-    public Ship(int shipSize, boolean isVertical, Board board, int shipCounts)
+    public enum ShipType 
     {
-        this.shipCounts = shipCounts;
-        this.currentBoard = board;
-        this.board = currentBoard.getBoard();
-        this.shipSize = shipSize;
-        this.isVertical = isVertical;
+        CARRIER(5), 
+        BATTLESHIP(4), 
+        CRUISER(3), 
+        SUBMARINE(3), 
+        DESTROYER(2),
+        BOAT(1);
+
+        private final int size;
+
+        ShipType(int size) 
+        {
+            this.size = size;
+        }
+
+        public int getSize() 
+        {
+            return size;
+        }
     }
 
-    public int getShipSize()
+    public Ship(ShipType type) 
     {
-        return this.shipSize;
+        this.shipType = type;
+        this.shipSize = type.getSize();
+        this.shipHealth = shipSize; 
+        this.isDestroyed = false;
     }
 
-    public void placeShips(int x, int y)
+    public int getShipSize() 
     {
-        currentBoard.setShips(x, y);
+        return shipSize;
     }
 
-    public void setShipSize(int newSize)
+    public int getShipHealth() 
     {
-        this.shipSize = newSize;
+        return shipHealth;
+    }
+
+    public boolean getIsDestroyed() 
+    {
+        return shipHealth == 0;
+    }
+
+    public void hit() 
+    {
+        if (shipHealth > 0) 
+        {
+            shipHealth--;
+            if (shipHealth == 0) 
+            {
+                isDestroyed = true; 
+            }
+        } 
+        else 
+        {
+            System.out.println("SHIP IS ALREADY DISTROYED");
+        }
+    }
+
+    public ShipType getShipType() 
+    {
+        return shipType;
+    }
+
+    public String getShipTypeString()
+    {
+        return shipType.toString();
     }
 }

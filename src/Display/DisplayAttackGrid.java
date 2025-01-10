@@ -1,9 +1,13 @@
-package Board;
+package Display;
 
 import javax.swing.*;
+
+import Board.Board;
+import Board.BoardLogic;
+
 import java.awt.*;
 
-public class DisplayGrid extends JFrame 
+public class DisplayAttackGrid extends JFrame 
 {
     private static final Color DEFAULTCOLOR = Color.BLUE;
     private static final Color CLICKEDCOLOR = Color.ORANGE;
@@ -12,22 +16,18 @@ public class DisplayGrid extends JFrame
     private static final Color HITCOLOR = Color.YELLOW;
     private static final Color DESTROYCOLOR = Color.RED;
     private static final Color UNKNOWNCOLOR = Color.BLACK;
-    private DisplayGridMode currentMode;
     
     public JButton[][] buttonsInGrid = new JButton[10][10];
     public String[][] currentBoard;
     public Board board;
     public BoardLogic logic;
 
-    public DisplayGrid(Board board, BoardLogic logic, DisplayGridMode initialMode) 
+    public DisplayAttackGrid(Board board, BoardLogic logic) 
     {
         this.board = board;
         this.currentBoard = board.getBoard();
-        this.logic = logic;
-        this.currentMode = initialMode;
         initButtons();
         initFrame();
-        determineGamemode();
     }
     
     public void initFrame()
@@ -39,11 +39,6 @@ public class DisplayGrid extends JFrame
         updateGUI();
     }
 
-    public void setMode(DisplayGridMode newMode)
-    {
-        this.currentMode = newMode;
-        updateGUI();
-    }
 
     public void initButtons()
     {
@@ -79,61 +74,10 @@ public class DisplayGrid extends JFrame
             }
         }
     }
-    
-    public void determineGamemode()
+
+    public void buttonsAction(int x, int y)
     {
-        switch (currentMode)
-        {
-            case ATTACK -> attackMode();
-            case PLACESHIPS -> placeShipsMode();
-            case VIEW -> viewMode();
-        }
-
-        updateGUI();
-    }
-
-    private void buttonsAction(int x, int y)
-    {
-        switch (currentMode)
-        {
-            case ATTACK -> attackButtons(x, y);
-            case PLACESHIPS -> placeShipsButtons(x, y);
-            case VIEW -> viewButtons(x, y);
-        }
-
-        updateGUI();
-    }
-
-    private void attackButtons(int x, int y)
-    {
-        System.out.println("ATTACK BUTTONS");
-    }
-
-    private void placeShipsButtons(int x, int y)
-    {
-        System.out.println("PLACE SHIPS BUTTONS");
-    }
-
-    private void viewButtons(int x, int y)
-    {
-        System.out.println("VIEW BUTTONS ACTION");
-    }
-
-    private void attackMode()
-    {
-        System.out.println("ATTAK MODE ACTIVATE");
-    }
-
-    private void placeShipsMode()
-    {
-        JButton isVerticalButton = new JButton();
-        add(isVerticalButton);
-        System.out.println("PLACE SHIPS MODE ACTIVATE");
-    }
-
-    private void viewMode()
-    {
-        System.out.println("VIEW MODE ACTIVATE");
+        System.out.println("BUTTONS ACTION");
     }
 
     public void updateGUI()
@@ -157,3 +101,4 @@ public class DisplayGrid extends JFrame
     } 
 
 }
+
