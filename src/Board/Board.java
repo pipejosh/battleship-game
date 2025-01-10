@@ -61,7 +61,7 @@ public class Board
         return x >= 0 && x < size && y >= 0 && y < size;
     }
 
-    public void setShips(int x, int y)
+    public void setShip(int x, int y)
     {
         setBoardPosition(x, y, "SHIP");
     }

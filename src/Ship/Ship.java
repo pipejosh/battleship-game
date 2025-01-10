@@ -6,7 +6,6 @@ public class Ship {
     private final int shipSize;
     private int shipHealth;
     private boolean isDestroyed;
-    private boolean isHorizontal;
     private final ShipType shipType;
 
     public enum ShipType 
@@ -15,7 +14,8 @@ public class Ship {
         BATTLESHIP(4), 
         CRUISER(3), 
         SUBMARINE(3), 
-        DESTROYER(2);
+        DESTROYER(2),
+        BOAT(1);
 
         private final int size;
 
@@ -36,7 +36,6 @@ public class Ship {
         this.shipSize = type.getSize();
         this.shipHealth = shipSize; 
         this.isDestroyed = false;
-        this.isHorizontal = true; 
     }
 
     public int getShipSize() 
@@ -49,19 +48,9 @@ public class Ship {
         return shipHealth;
     }
 
-    public boolean isDestroyed() 
+    public boolean getIsDestroyed() 
     {
         return shipHealth == 0;
-    }
-
-    public boolean isHorizontal() 
-    {
-        return isHorizontal;
-    }
-
-    public void setHorizontal(boolean isHorizontal) 
-    {
-        this.isHorizontal = isHorizontal;
     }
 
     public void hit() 
@@ -83,5 +72,10 @@ public class Ship {
     public ShipType getShipType() 
     {
         return shipType;
+    }
+
+    public String getShipTypeString()
+    {
+        return shipType.toString();
     }
 }

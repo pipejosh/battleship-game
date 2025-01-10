@@ -16,36 +16,52 @@ public class DisplayShipPlace extends JFrame
     private static final Color DESTROYCOLOR = Color.RED;
     private static final Color UNKNOWNCOLOR = Color.BLACK;
     
+    public JButton btnChangeOrientation;
+    public JLabel lblShipsLeft;
+    public JLabel lblCurrentShip;
+    public JLabel lblOrientation;
     public JButton[][] buttonsInGrid = new JButton[10][10];
     public String[][] currentBoard;
     public Board board;
-    public BoardLogic logic;
+    public PlaceShips shipPlacer;
 
     public DisplayShipPlace(Board board, BoardLogic logic) 
     {
         this.board = board;
         this.currentBoard = board.getBoard();
-        initButtons();
+        this.shipPlacer = new PlaceShips(board);
+        initComponents();
         initFrame();
     }
     
     public void initFrame()
     {
-        setSize(500, 500);
+        setSize(800, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
         updateGUI();
     }
 
-    public void initButtons() 
+    public void initComponents() 
     {
-        JPanel pnlMain = new JPanel(new BorderLayout());
-
         JPanel pnlControl = new JPanel();
-        JButton btnChangeOrientation = new JButton("Change Orientation");
+        JPanel pnlMain = new JPanel(new BorderLayout());
+        
+        btnChangeOrientation = new JButton("Change Orientation");
+        
+        lblShipsLeft = new JLabel();
+        lblCurrentShip = new JLabel();
+        lblOrientation = new JLabel();
         pnlControl.add(btnChangeOrientation);
-
+        pnlControl.add(lblShipsLeft);
+        pnlControl.add(lblCurrentShip);
+        pnlControl.add(lblOrientation);
+        
+        setShipsLeftText();
+        setCurrentShipText();
+        setOrientationText();
+        
         JPanel pnlBoard = new JPanel(new GridLayout(board.getSize(), board.getSize()));
 
         int coutner = 0;
@@ -78,14 +94,42 @@ public class DisplayShipPlace extends JFrame
             {
                 final int row = i;
                 final int col = j;
-                buttonsInGrid[row][col].addActionListener(e -> {buttonsAction(row, col);});
+                buttonsInGrid[row][col].addActionListener(e -> {buttonsInGridAction(row, col);});
             }
         }
+
+        btnChangeOrientation.addActionListener(e -> {buttonChangeOrientationAction();});
     }
 
-    public void buttonsAction(int x, int y)
+    public void setShipsLeftText()
     {
+        lblShipsLeft.setText("Ships Left: " + shipPlacer.getShipsLeft());
+    }
+
+    public void setOrientationText()
+    {
+        lblOrientation.setText("Current Orientation: " + (shipPlacer.getIsHorizontal() ? "Vertical" : "Horizontal") );
+    }
+
+    public void setCurrentShipText()
+    {
+        lblCurrentShip.setText("Current Ship: " + (shipPlacer.getShipName()));
+    }
+
+    public void buttonsInGridAction(int x, int y)
+    {
+        shipPlacer.placeShips(x, y);
         System.out.println("BUTTONS ACTION");
+        setCurrentShipText();
+        setShipsLeftText();
+        updateGUI();
+    }
+
+    public void buttonChangeOrientationAction()
+    {
+        shipPlacer.changeOrientation();
+
+        setOrientationText();
     }
 
     public void updateGUI()
