@@ -9,16 +9,11 @@ import java.awt.*;
 public class DisplayShipPlace extends JFrame 
 {
     private static final Color DEFAULTCOLOR = Color.BLUE;
-    private static final Color CLICKEDCOLOR = Color.ORANGE;
     private static final Color SHIPCOLOR = Color.GREEN;
-    private static final Color MISSCOLOR = Color.WHITE;
-    private static final Color HITCOLOR = Color.YELLOW;
-    private static final Color DESTROYCOLOR = Color.RED;
     private static final Color UNKNOWNCOLOR = Color.BLACK;
     
     public JButton btnChangeOrientation;
     public JLabel lblShipsLeft;
-    public JLabel lblCurrentShip;
     public JLabel lblOrientation;
     public JButton[][] buttonsInGrid = new JButton[10][10];
     public String[][] currentBoard;
@@ -51,14 +46,11 @@ public class DisplayShipPlace extends JFrame
         btnChangeOrientation = new JButton("Change Orientation");
         
         lblShipsLeft = new JLabel();
-        lblCurrentShip = new JLabel();
         lblOrientation = new JLabel();
         pnlControl.add(btnChangeOrientation);
         pnlControl.add(lblShipsLeft);
-        pnlControl.add(lblCurrentShip);
         pnlControl.add(lblOrientation);
         
-        setCurrentShipText();
         setShipsLeftText();
         setOrientationText();
         
@@ -111,24 +103,18 @@ public class DisplayShipPlace extends JFrame
         lblOrientation.setText("Current Orientation: " + (shipPlacer.getIsHorizontal() ? "Vertical" : "Horizontal") );
     }
 
-    public void setCurrentShipText()
-    {
-        lblCurrentShip.setText("Current Ship: " + (shipPlacer.getShipName()));
-    }
-
     public void buttonsInGridAction(int x, int y)
     {
         int shipsLeft = shipPlacer.getShipsLeft();
 
         shipPlacer.placeShips(x, y);
-        setCurrentShipText();
         setShipsLeftText();
         updateGUI();
 
-        if (shipsLeft == 0)
+        switch (shipsLeft)
         {
-            System.out.println("SHIP PLACEMENT DONE");
-            disabelButtons();
+            case 1 -> lblShipsLeft.setText("ALL SHIPS PLACED");
+            case 0 -> finishShipPlacement();
         }
     }
 
@@ -164,6 +150,12 @@ public class DisplayShipPlace extends JFrame
                 jButton.setEnabled(false);
             }     
         }
+    }
+
+    public void finishShipPlacement()
+    {
+        disabelButtons();
+        this.dispose();
     }
 }
 

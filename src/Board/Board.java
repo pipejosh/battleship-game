@@ -9,10 +9,11 @@ public class Board
     /*  BOARD ARRAY CAN CONTAIN 6 VALUES; 
         DEFAULT: empty space
         SHIP: ship space
-        SHOT: shot done
+        SHIPPADDING: shot done
         MISS: shot miss
         HIT: ship hit
         DESTROYED: ship destroyed
+
     */
 
     public Board() 
