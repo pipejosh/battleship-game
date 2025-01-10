@@ -26,7 +26,8 @@ public class MainMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ConfigButton = new javax.swing.JButton();
+        jSlider1 = new javax.swing.JSlider();
+        SettingButton = new javax.swing.JButton();
         PlayButton = new javax.swing.JButton();
         NameLabel = new javax.swing.JLabel();
         ExitButton1 = new javax.swing.JButton();
@@ -36,9 +37,9 @@ public class MainMenu extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(500, 500));
         setSize(new java.awt.Dimension(500, 500));
 
-        ConfigButton.setBackground(new java.awt.Color(137, 87, 64));
-        ConfigButton.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
-        ConfigButton.setText("Config");
+        SettingButton.setBackground(new java.awt.Color(137, 87, 64));
+        SettingButton.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
+        SettingButton.setText("Settings");
 
         PlayButton.setBackground(new java.awt.Color(137, 87, 64));
         PlayButton.setFont(new java.awt.Font("Impact", 0, 36)); // NOI18N
@@ -70,7 +71,7 @@ public class MainMenu extends javax.swing.JFrame {
                         .addGap(0, 85, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(ConfigButton)))
+                        .addComponent(SettingButton)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -83,7 +84,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ExitButton1)
                 .addGap(69, 69, 69)
-                .addComponent(ConfigButton)
+                .addComponent(SettingButton)
                 .addContainerGap())
         );
 
@@ -126,9 +127,10 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ConfigButton;
     private javax.swing.JButton ExitButton1;
     private javax.swing.JLabel NameLabel;
     private javax.swing.JButton PlayButton;
+    private javax.swing.JButton SettingButton;
+    private javax.swing.JSlider jSlider1;
     // End of variables declaration//GEN-END:variables
 }
