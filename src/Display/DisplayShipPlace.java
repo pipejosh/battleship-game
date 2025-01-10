@@ -5,6 +5,8 @@ import Board.*;
 import Ship.*;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class DisplayShipPlace extends JFrame 
 {
@@ -76,6 +78,7 @@ public class DisplayShipPlace extends JFrame
         System.out.println("Buttons correctly initialized");
 
         addButtonsActionListener();
+        addButtonsMouseListener();
     }
 
     public void addButtonsActionListener()
@@ -140,6 +143,32 @@ public class DisplayShipPlace extends JFrame
             } 
         }   
     } 
+
+    public void addButtonsMouseListener()
+    {
+        for (int i = 0; i < board.getSize(); i++) 
+        {
+            for (int j = 0; j < board.getSize(); j++) 
+            {
+                final int row = i;
+                final int col = j;
+                buttonsInGrid[row][col].addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseEntered(MouseEvent e) 
+                    {
+                        buttonsInGrid[row][col].setBackground(UNKNOWNCOLOR);
+                    }
+
+                    @Override
+                    public void mouseExited(MouseEvent e)
+                    {
+                        updateGUI();
+                    }
+                });
+            }
+        }
+
+    }
 
     public void disabelButtons()
     {
