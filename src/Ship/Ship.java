@@ -50,7 +50,12 @@ public class Ship {
 
     public boolean getIsDestroyed() 
     {
-        return shipHealth == 0;
+        if (shipHealth == 0)
+        {
+            isDestroyed = true;
+        }
+
+        return isDestroyed;
     }
 
     public void hit() 
@@ -74,7 +79,7 @@ public class Ship {
         return shipType;
     }
 
-    public String getShipTypeString()
+    public String getShipName()
     {
         return shipType.toString();
     }

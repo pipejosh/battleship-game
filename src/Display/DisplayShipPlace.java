@@ -118,11 +118,18 @@ public class DisplayShipPlace extends JFrame
 
     public void buttonsInGridAction(int x, int y)
     {
+        int shipsLeft = shipPlacer.getShipsLeft();
+
         shipPlacer.placeShips(x, y);
-        System.out.println("BUTTONS ACTION");
         setCurrentShipText();
         setShipsLeftText();
         updateGUI();
+
+        if (shipsLeft == 0)
+        {
+            System.out.println("SHIP PLACEMENT DONE");
+            disabelButtons();
+        }
     }
 
     public void buttonChangeOrientationAction()
@@ -142,15 +149,21 @@ public class DisplayShipPlace extends JFrame
                 {
                     case "DEFAULT" -> buttonsInGrid[i][j].setBackground(DEFAULTCOLOR);
                     case "SHIP" -> buttonsInGrid[i][j].setBackground(SHIPCOLOR);
-                    case "CLICKED" -> buttonsInGrid[i][j].setBackground(CLICKEDCOLOR);
-                    case "MISS" -> buttonsInGrid[i][j].setBackground(MISSCOLOR);
-                    case "HIT" -> buttonsInGrid[i][j].setBackground(HITCOLOR);
-                    case "DESTROYED" ->  buttonsInGrid[i][j].setBackground(DESTROYCOLOR);
                     default -> buttonsInGrid[i][j].setBackground(UNKNOWNCOLOR);
                 }
             } 
         }   
     } 
 
+    public void disabelButtons()
+    {
+        for (JButton[] jButtons : buttonsInGrid) 
+        {
+            for (JButton jButton : jButtons) 
+            {
+                jButton.setEnabled(false);
+            }     
+        }
+    }
 }
 

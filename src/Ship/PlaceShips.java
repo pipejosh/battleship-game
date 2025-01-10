@@ -22,6 +22,7 @@ public class PlaceShips
         this.ships[4] = new Ship(Ship.ShipType.DESTROYER);
         this.ships[5] = new Ship(Ship.ShipType.BOAT);
         this.shipsLeft = ships.length;
+        this.currenShipName = ships[ships.length - shipsLeft].getShipName();
     }
 
     public void placeShips(int x, int y) 
@@ -48,12 +49,12 @@ public class PlaceShips
                     return;
                 }
             }
-
+            
             for (int i = 0; i < currentShip.getShipSize(); i++) 
             {
                 board.setShip(x + i, y);
 
-                currenShipName = currentShip.getShipTypeString();
+                currenShipName = currentShip.getShipName();
             }
         } 
 
@@ -76,7 +77,7 @@ public class PlaceShips
             {
                 board.setShip(x, y + i);
 
-                currenShipName = currentShip.getShipTypeString();
+                currenShipName = currentShip.getShipName();
             }
         }
 
