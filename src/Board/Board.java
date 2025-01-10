@@ -7,12 +7,12 @@ public class Board
     private final String[][] board; 
 
     /*  BOARD ARRAY CAN CONTAIN 6 VALUES; 
-        0: empty space
-        1: ship space
-        2: shot done
-        3: shot miss
-        4: ship hit
-        5: ship destroyed
+        DEFAULT: empty space
+        SHIP: ship space
+        SHOT: shot done
+        MISS: shot miss
+        HIT: ship hit
+        DESTROYED: ship destroyed
     */
 
     public Board() 
