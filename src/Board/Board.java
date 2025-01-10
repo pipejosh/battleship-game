@@ -17,13 +17,30 @@ public class Board
 
     public Board() 
     {
-        this.size = 10;  // Tamaño fijo para este ejemplo
+        this.size = 10;
         this.board = new String[size][size];
+        initializeBoard("DEFAULT");
     }
     
+    private void initializeBoard(String defaultValue) 
+    {
+        for (int i = 0; i < size; i++) 
+        {
+            for (int j = 0; j < size; j++) 
+            {
+                board[i][j] = defaultValue;
+            }
+        }
+    } 
+
     public int getSize() 
     {
         return size;
+    }
+
+    public String getBoardPosition(int x, int y)
+    {
+        return board[x][y];
     }
 
     public String[][] getBoard() 

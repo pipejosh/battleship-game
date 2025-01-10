@@ -1,9 +1,12 @@
-package Board;
+package Display;
 
+
+import Board.*;
+import Ship.*;
 import javax.swing.*;
 import java.awt.*;
 
-public class DisplayGrid extends JFrame 
+public class DisplayShipPlace extends JFrame 
 {
     private static final Color DEFAULTCOLOR = Color.BLUE;
     private static final Color CLICKEDCOLOR = Color.ORANGE;
@@ -18,7 +21,7 @@ public class DisplayGrid extends JFrame
     public Board board;
     public BoardLogic logic;
 
-    public DisplayGrid(Board board, BoardLogic logic) 
+    public DisplayShipPlace(Board board, BoardLogic logic) 
     {
         this.board = board;
         this.currentBoard = board.getBoard();
@@ -35,25 +38,34 @@ public class DisplayGrid extends JFrame
         updateGUI();
     }
 
-
-    public void initButtons()
+    public void initButtons() 
     {
-        setLayout(new GridLayout(board.getSize(), board.getSize()));
+        JPanel pnlMain = new JPanel(new BorderLayout());
 
-        int counter = 1;
+        JPanel pnlControl = new JPanel();
+        JButton btnChangeOrientation = new JButton("Change Orientation");
+        pnlControl.add(btnChangeOrientation);
 
+        JPanel pnlBoard = new JPanel(new GridLayout(board.getSize(), board.getSize()));
+
+        int coutner = 0;
         for (int i = 0; i < board.getSize(); i++) 
         {
             for (int j = 0; j < board.getSize(); j++) 
             {
+                coutner++;
                 buttonsInGrid[i][j] = new JButton();
-                add(buttonsInGrid[i][j]);
-                buttonsInGrid[i][j].setName("btn" + counter);
-                counter ++;
+                buttonsInGrid[i][j].setName("btn" + coutner); 
+                pnlBoard.add(buttonsInGrid[i][j]);
             }
         }
 
-        System.out.println("BUTTONS CORRECTLY INITIALIZED");
+        pnlMain.add(pnlControl, BorderLayout.NORTH);
+        pnlMain.add(pnlBoard, BorderLayout.CENTER);
+
+        this.getContentPane().add(pnlMain);
+
+        System.out.println("Buttons correctly initialized");
 
         addButtonsActionListener();
     }
@@ -97,3 +109,4 @@ public class DisplayGrid extends JFrame
     } 
 
 }
+
