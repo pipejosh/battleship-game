@@ -152,7 +152,8 @@ public class DisplayShipPlace extends JFrame
             {
                 final int row = i;
                 final int col = j;
-                buttonsInGrid[row][col].addMouseListener(new MouseAdapter() {
+                buttonsInGrid[row][col].addMouseListener(new MouseAdapter() 
+                {
                     @Override
                     public void mouseEntered(MouseEvent e) 
                     {
