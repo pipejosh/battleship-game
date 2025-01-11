@@ -7,9 +7,10 @@ public class PlaceShips
     private Board board;
     private Ship[] ships;
     
-    public String currenShipName = "";
+    public String currentShipName = "";
     public int shipsLeft = 0;
     public boolean isHorizontal = false;
+    public Ship currentShip;
 
     public PlaceShips(Board board) 
     {
@@ -22,7 +23,8 @@ public class PlaceShips
         this.ships[4] = new Ship(Ship.ShipType.DESTROYER);
         this.ships[5] = new Ship(Ship.ShipType.BOAT);
         this.shipsLeft = ships.length;
-        this.currenShipName = ships[ships.length - shipsLeft].getShipName();
+        this.currentShipName = ships[ships.length - shipsLeft].getShipName();
+        this.currentShip = ships[ships.length - shipsLeft];
     }
 
     public void placeShips(int x, int y) 
@@ -33,7 +35,7 @@ public class PlaceShips
             return;
         }
 
-        Ship currentShip = ships[ships.length - shipsLeft];
+        currentShip = ships[ships.length - shipsLeft];
 
         if (isHorizontal)
         {
@@ -54,7 +56,7 @@ public class PlaceShips
             {
                 board.setShip(x + i, y);
 
-                currenShipName = currentShip.getShipName();
+                currentShipName = currentShip.getShipName();
             }
         } 
 
@@ -77,7 +79,7 @@ public class PlaceShips
             {
                 board.setShip(x, y + i);
 
-                currenShipName = currentShip.getShipName();
+                currentShipName = currentShip.getShipName();
             }
         }
 
@@ -85,10 +87,9 @@ public class PlaceShips
 
     }
 
-    public boolean changeOrientation() 
+    public void setIsHoriazontal(boolean newOrientation)
     {
-        isHorizontal = !isHorizontal;
-        return isHorizontal;
+        this.isHorizontal = newOrientation;
     }
 
     public boolean getIsHorizontal() 
@@ -103,6 +104,11 @@ public class PlaceShips
 
     public String getShipName()
     {
-        return currenShipName;
+        return currentShipName;
+    }
+
+    public Ship getCurrentShip()
+    {
+        return currentShip;
     }
 }

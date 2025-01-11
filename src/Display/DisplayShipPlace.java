@@ -13,6 +13,7 @@ public class DisplayShipPlace extends JFrame
     private static final Color DEFAULTCOLOR = Color.BLUE;
     private static final Color SHIPCOLOR = Color.GREEN;
     private static final Color UNKNOWNCOLOR = Color.BLACK;
+    private int counter = 0;
     
     public JButton btnChangeOrientation;
     public JLabel lblShipsLeft;
@@ -123,7 +124,15 @@ public class DisplayShipPlace extends JFrame
 
     public void buttonChangeOrientationAction()
     {
-        shipPlacer.changeOrientation();
+        counter ++;
+
+        switch (counter % 2)
+        {
+            case 1 -> shipPlacer.setIsHoriazontal(true);
+            case 0 -> shipPlacer.setIsHoriazontal(false);
+        }
+
+        System.out.println("SE CAMBIO LA HORINETACION " + shipPlacer.getIsHorizontal());
 
         setOrientationText();
     }
@@ -157,7 +166,7 @@ public class DisplayShipPlace extends JFrame
                     @Override
                     public void mouseEntered(MouseEvent e) 
                     {
-                        buttonsInGrid[row][col].setBackground(UNKNOWNCOLOR);
+                        previewShipPlaced(row, col, shipPlacer.getIsHorizontal());
                     }
 
                     @Override
@@ -169,6 +178,55 @@ public class DisplayShipPlace extends JFrame
             }
         }
 
+    }
+
+    public void previewShipPlaced(int x, int y, boolean isHorizontal)
+    {
+        Ship currentShip = shipPlacer.getCurrentShip(); 
+
+        if (shipPlacer.getIsHorizontal())
+        {
+            if (x + currentShip.getShipSize() > board.getSize())
+            {
+                return;
+            }
+
+            for (int i = 0; i < currentShip.getShipSize(); i++) 
+            {
+                if (board.getBoardPosition(x + i, y).equals("SHIP")) 
+                {
+                    System.out.println("NO SE PUEDE PONER PENDEJO X2");
+                    return;
+                }
+            }
+            
+            for (int i = 0; i < currentShip.getShipSize(); i++) 
+            {
+                buttonsInGrid[x + i][y].setBackground(SHIPCOLOR);
+            }
+        } 
+        
+        else 
+        {
+            if (y + currentShip.getShipSize() > board.getSize())
+            {
+                return;
+            }
+            
+            for (int i = 0; i < currentShip.getShipSize(); i++) 
+            {
+                if (board.getBoardPosition(x, y + i).equals("SHIP")) 
+                {
+                    System.out.println("NO SE PUEDE PONER PENDEJO");
+                    return;
+                }
+            }
+            
+            for (int i = 0; i < currentShip.getShipSize(); i++) 
+            {
+                buttonsInGrid[x][y + i].setBackground(SHIPCOLOR);
+            }
+        }
     }
 
     public void disabelButtons()
