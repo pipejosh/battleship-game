@@ -11,20 +11,20 @@ public class PlaceShips
     public int shipsLeft = 0;
     public boolean isHorizontal = false;
     public Ship currentShip;
+    public Ship nextShip;
 
     public PlaceShips(Board board) 
     {
         this.board = board;
         this.ships = new Ship[6];
-        this.ships[0] = new Ship(Ship.ShipType.CARRIER);
-        this.ships[1] = new Ship(Ship.ShipType.BATTLESHIP);
-        this.ships[2] = new Ship(Ship.ShipType.CRUISER);
-        this.ships[3] = new Ship(Ship.ShipType.SUBMARINE);
-        this.ships[4] = new Ship(Ship.ShipType.DESTROYER);
-        this.ships[5] = new Ship(Ship.ShipType.BOAT);
+        this.ships[0] = new Ship(Ship.ShipType.BOAT);
+        this.ships[1] = new Ship(Ship.ShipType.DESTROYER);
+        this.ships[2] = new Ship(Ship.ShipType.SUBMARINE);
+        this.ships[3] = new Ship(Ship.ShipType.CRUISER);
+        this.ships[4] = new Ship(Ship.ShipType.BATTLESHIP);
+        this.ships[5] = new Ship(Ship.ShipType.CARRIER);
         this.shipsLeft = ships.length;
         this.currentShipName = ships[ships.length - shipsLeft].getShipName();
-        this.currentShip = ships[ships.length - shipsLeft];
     }
 
     public void placeShips(int x, int y) 
@@ -35,7 +35,7 @@ public class PlaceShips
             return;
         }
 
-        currentShip = ships[ships.length - shipsLeft];
+        currentShip = ships[shipsLeft - 1];
 
         if (isHorizontal)
         {
@@ -83,6 +83,7 @@ public class PlaceShips
             }
         }
 
+
         shipsLeft--;
 
     }
@@ -107,8 +108,14 @@ public class PlaceShips
         return currentShipName;
     }
 
-    public Ship getCurrentShip()
+    public Ship getNextShip()
     {
-        return currentShip;
+        if (shipsLeft - 1 < 0)
+        {
+            return null;
+        }
+        Ship nextShip = ships[shipsLeft - 1];
+
+        return nextShip;
     }
 }

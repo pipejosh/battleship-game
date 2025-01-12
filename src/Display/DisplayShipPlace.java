@@ -117,7 +117,7 @@ public class DisplayShipPlace extends JFrame
 
         switch (shipsLeft)
         {
-            case 1 -> lblShipsLeft.setText("ALL SHIPS PLACED");
+            case 1 -> lblShipsLeft.setText("ALL SHIPS PLACED CLICK ANY BUTTONS TO PLAY");
             case 0 -> finishShipPlacement();
         }
     }
@@ -180,49 +180,57 @@ public class DisplayShipPlace extends JFrame
 
     }
 
-    public void previewShipPlaced(int x, int y, boolean isHorizontal)
-    {
-        Ship currentShip = shipPlacer.getCurrentShip(); 
-
-        if (shipPlacer.getIsHorizontal())
+    public void previewShipPlaced(int x, int y, boolean isHorizontal) {
+        
+        Ship nextShip = shipPlacer.getNextShip();
+        if (nextShip == null) 
         {
-            if (x + currentShip.getShipSize() > board.getSize())
+            System.out.println("No current ship to preview.");
+            return;
+        }
+
+        int shipSize = nextShip.getShipSize();
+
+        if (isHorizontal) {
+            if (x + shipSize > board.getSize()) 
             {
+                System.out.println("Preview out of bounds horizontally.");
                 return;
             }
 
-            for (int i = 0; i < currentShip.getShipSize(); i++) 
+            for (int i = 0; i < shipSize; i++) 
             {
                 if (board.getBoardPosition(x + i, y).equals("SHIP")) 
                 {
-                    System.out.println("NO SE PUEDE PONER PENDEJO X2");
+                    System.out.println("Cannot preview here: collision detected.");
                     return;
                 }
             }
-            
-            for (int i = 0; i < currentShip.getShipSize(); i++) 
+
+            for (int i = 0; i < shipSize; i++) 
             {
                 buttonsInGrid[x + i][y].setBackground(SHIPCOLOR);
             }
         } 
-        
+
         else 
         {
-            if (y + currentShip.getShipSize() > board.getSize())
+            if (y + shipSize > board.getSize()) 
             {
+                System.out.println("Preview out of bounds vertically.");
                 return;
             }
-            
-            for (int i = 0; i < currentShip.getShipSize(); i++) 
+
+            for (int i = 0; i < shipSize; i++) 
             {
                 if (board.getBoardPosition(x, y + i).equals("SHIP")) 
                 {
-                    System.out.println("NO SE PUEDE PONER PENDEJO");
+                    System.out.println("Cannot preview here: collision detected.");
                     return;
                 }
             }
-            
-            for (int i = 0; i < currentShip.getShipSize(); i++) 
+
+            for (int i = 0; i < shipSize; i++) 
             {
                 buttonsInGrid[x][y + i].setBackground(SHIPCOLOR);
             }

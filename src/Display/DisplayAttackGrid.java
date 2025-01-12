@@ -78,6 +78,7 @@ public class DisplayAttackGrid extends JFrame
     public void buttonsAction(int x, int y)
     {
         System.out.println("BUTTONS ACTION");
+        updateGUI();
     }
 
     public void updateGUI()
