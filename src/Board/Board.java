@@ -2,8 +2,8 @@ package Board;
 
 public class Board 
 {
-    private final int size;
-    private final String[][] board; 
+    private int size;
+    private String[][] board; 
 
     /*  BOARD ARRAY CAN CONTAIN 6 VALUES; 
         DEFAULT: empty space
@@ -11,9 +11,7 @@ public class Board
         SHIPPADDING: shot done
         MISS: shot miss
         HIT: ship hit
-        DESTROYED: ship destroyed
-
-    */
+        DESTROYED: ship destroyed */
 
     public Board() 
     {
@@ -35,7 +33,6 @@ public class Board
 
     public boolean attack(int x, int y) 
     {
-    
         if (board[x][y].equals("SHIP") && isInBounds(x, y)) 
         {
             setHit(x, y);
