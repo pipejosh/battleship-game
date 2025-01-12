@@ -13,6 +13,7 @@ public class DisplayShipPlace extends JFrame
     private static final Color DEFAULTCOLOR = Color.BLUE;
     private static final Color SHIPCOLOR = Color.GREEN;
     private static final Color UNKNOWNCOLOR = Color.BLACK;
+
     private int counter = 0;
     private Runnable onShipsPlacedCallback;
     

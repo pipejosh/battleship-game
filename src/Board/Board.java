@@ -1,6 +1,5 @@
 package Board;
 
-
 public class Board 
 {
     private final int size;

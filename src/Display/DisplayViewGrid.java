@@ -1,21 +1,20 @@
 package Display;
 
-import javax.swing.*;
-
 import Board.Board;
-import Board.BoardLogic;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class DisplayViewGrid extends JFrame 
 {
     private static final Color DEFAULTCOLOR = Color.BLUE;
     private static final Color SHIPCOLOR = Color.GREEN;
-    private static final Color MISSCOLOR = Color.WHITE;
-    private static final Color HITCOLOR = Color.YELLOW;
+    private static final Color MISSCOLOR = Color.YELLOW;
+    private static final Color HITCOLOR = Color.ORANGE;
     private static final Color DESTROYCOLOR = Color.RED;
     private static final Color UNKNOWNCOLOR = Color.BLACK;
     
+    public Timer updateTimer;
     public JButton[][] buttonsInGrid = new JButton[10][10];
     public String[][] currentBoard;
     public Board board;
@@ -34,7 +33,7 @@ public class DisplayViewGrid extends JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
-        updateGUI();
+        starTimer();
     }
 
 
@@ -58,6 +57,21 @@ public class DisplayViewGrid extends JFrame
         System.out.println("BUTTONS CORRECTLY INITIALIZED");
 
         disabelButtons();
+        updateGUI();
+    }
+
+    public void starTimer()
+    {
+        updateTimer = new Timer(500, e -> updateGUI());
+        updateTimer.start();
+    }
+    
+    public void stopTimer()
+    {
+        if (updateTimer != null)
+        {
+            updateTimer.stop();
+        }
     }
 
     public void updateGUI()

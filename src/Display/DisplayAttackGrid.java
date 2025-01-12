@@ -10,10 +10,9 @@ import java.awt.*;
 public class DisplayAttackGrid extends JFrame 
 {
     private static final Color DEFAULTCOLOR = Color.BLUE;
-    private static final Color CLICKEDCOLOR = Color.ORANGE;
     private static final Color SHIPCOLOR = Color.GREEN;
-    private static final Color MISSCOLOR = Color.WHITE;
-    private static final Color HITCOLOR = Color.YELLOW;
+    private static final Color MISSCOLOR = Color.YELLOW;
+    private static final Color HITCOLOR = Color.ORANGE;
     private static final Color DESTROYCOLOR = Color.RED;
     private static final Color UNKNOWNCOLOR = Color.BLACK;
     
@@ -36,7 +35,6 @@ public class DisplayAttackGrid extends JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
-        updateGUI();
     }
 
 
@@ -53,6 +51,7 @@ public class DisplayAttackGrid extends JFrame
                 buttonsInGrid[i][j] = new JButton();
                 add(buttonsInGrid[i][j]);
                 buttonsInGrid[i][j].setName("btn" + counter);
+                buttonsInGrid[i][j].setBackground(DEFAULTCOLOR);
                 counter ++;
             }
         }
@@ -78,28 +77,28 @@ public class DisplayAttackGrid extends JFrame
     public void buttonsAction(int x, int y)
     {
         System.out.println("BUTTONS ACTION");
-        updateGUI();
+        checkAction(x, y);
+        updateGUI(x, y);
     }
 
-    public void updateGUI()
+    public void updateGUI(int x, int y)
     {
-        for (int i = 0; i < board.getSize(); i++)
+        switch (currentBoard[x][y])
         {
-            for (int j = 0; j < board.getSize(); j++)
-            {
-                switch (currentBoard[i][j])
-                {
-                    case "DEFAULT" -> buttonsInGrid[i][j].setBackground(DEFAULTCOLOR);
-                    case "SHIP" -> buttonsInGrid[i][j].setBackground(SHIPCOLOR);
-                    case "CLICKED" -> buttonsInGrid[i][j].setBackground(CLICKEDCOLOR);
-                    case "MISS" -> buttonsInGrid[i][j].setBackground(MISSCOLOR);
-                    case "HIT" -> buttonsInGrid[i][j].setBackground(HITCOLOR);
-                    case "DESTROYED" ->  buttonsInGrid[i][j].setBackground(DESTROYCOLOR);
-                    default -> buttonsInGrid[i][j].setBackground(UNKNOWNCOLOR);
-                }
-            } 
-        }   
+            case "DEFAULT" -> buttonsInGrid[x][y].setBackground(DEFAULTCOLOR);
+            case "SHIP" -> buttonsInGrid[x][y].setBackground(SHIPCOLOR);
+            case "MISS" -> buttonsInGrid[x][y].setBackground(MISSCOLOR);
+            case "HIT" -> buttonsInGrid[x][y].setBackground(HITCOLOR);
+            case "DESTROYED" ->  buttonsInGrid[x][y].setBackground(DESTROYCOLOR);
+            default -> buttonsInGrid[x][y].setBackground(UNKNOWNCOLOR);
+        }
+
+        buttonsInGrid[x][y].setEnabled(false);
     } 
 
+    public void checkAction(int x, int y)
+    {
+        board.attack(x, y);
+    }
 }
 
