@@ -4,26 +4,26 @@ import Display.*;
 
 public class BoardLogic 
 { 
-    private final DisplayAttackGrid playerAttackGrid;
-    private final DisplayShipPlace playerShips;
-    private final Board playerBoard;
+    private DisplayShipPlace shipPlace;
+    private DisplayViewGrid viewShips;
+    private DisplayAttackGrid attackShips;
 
+    private Board playerBoard = new Board();
 
     public BoardLogic()
     {
-        playerBoard = new Board();
-        
-        playerShips = new DisplayShipPlace(playerBoard, null);
-        
-        playerAttackGrid = new DisplayAttackGrid(playerBoard, this);
-
-        changeTitles();
+        shipPlace = new DisplayShipPlace(playerBoard);
+        shipPlace.setOnShipsPlacedCallback(this::onShipsPlaced);
     }
 
     public void changeTitles() 
     {
-        playerShips.setTitle("PONER BARQUITOS CHE");
-        playerAttackGrid.setTitle("TESTOOOO");
+    }
+
+    public void onShipsPlaced()
+    {
+        viewShips = new DisplayViewGrid(playerBoard);
+        attackShips = new DisplayAttackGrid(playerBoard, null);
     }
 
     public static void main(String[] args) 

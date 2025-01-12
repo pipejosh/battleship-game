@@ -7,10 +7,9 @@ import Board.BoardLogic;
 
 import java.awt.*;
 
-public class DisplayGrid extends JFrame 
+public class DisplayViewGrid extends JFrame 
 {
     private static final Color DEFAULTCOLOR = Color.BLUE;
-    private static final Color CLICKEDCOLOR = Color.ORANGE;
     private static final Color SHIPCOLOR = Color.GREEN;
     private static final Color MISSCOLOR = Color.WHITE;
     private static final Color HITCOLOR = Color.YELLOW;
@@ -20,9 +19,8 @@ public class DisplayGrid extends JFrame
     public JButton[][] buttonsInGrid = new JButton[10][10];
     public String[][] currentBoard;
     public Board board;
-    public BoardLogic logic;
 
-    public DisplayGrid(Board board, BoardLogic logic) 
+    public DisplayViewGrid(Board board) 
     {
         this.board = board;
         this.currentBoard = board.getBoard();
@@ -59,25 +57,7 @@ public class DisplayGrid extends JFrame
 
         System.out.println("BUTTONS CORRECTLY INITIALIZED");
 
-        addButtonsActionListener();
-    }
-
-    public void addButtonsActionListener()
-    {
-        for (int i = 0; i < board.getSize(); i++) 
-        {
-            for (int j = 0; j < board.getSize(); j++) 
-            {
-                final int row = i;
-                final int col = j;
-                buttonsInGrid[row][col].addActionListener(e -> {buttonsAction(row, col);});
-            }
-        }
-    }
-
-    public void buttonsAction(int x, int y)
-    {
-        System.out.println("BUTTONS ACTION");
+        disabelButtons();
     }
 
     public void updateGUI()
@@ -90,7 +70,6 @@ public class DisplayGrid extends JFrame
                 {
                     case "DEFAULT" -> buttonsInGrid[i][j].setBackground(DEFAULTCOLOR);
                     case "SHIP" -> buttonsInGrid[i][j].setBackground(SHIPCOLOR);
-                    case "CLICKED" -> buttonsInGrid[i][j].setBackground(CLICKEDCOLOR);
                     case "MISS" -> buttonsInGrid[i][j].setBackground(MISSCOLOR);
                     case "HIT" -> buttonsInGrid[i][j].setBackground(HITCOLOR);
                     case "DESTROYED" ->  buttonsInGrid[i][j].setBackground(DESTROYCOLOR);
@@ -100,4 +79,14 @@ public class DisplayGrid extends JFrame
         }   
     } 
 
+    public void disabelButtons()
+    {
+        for (JButton[] jbuttons : buttonsInGrid)
+        {
+            for (JButton jbutton : jbuttons)
+            {
+                jbutton.setEnabled(false); 
+            } 
+        }
+    }
 }

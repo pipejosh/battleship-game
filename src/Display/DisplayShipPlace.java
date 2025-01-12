@@ -14,6 +14,7 @@ public class DisplayShipPlace extends JFrame
     private static final Color SHIPCOLOR = Color.GREEN;
     private static final Color UNKNOWNCOLOR = Color.BLACK;
     private int counter = 0;
+    private Runnable onShipsPlacedCallback;
     
     public JButton btnChangeOrientation;
     public JLabel lblShipsLeft;
@@ -23,7 +24,7 @@ public class DisplayShipPlace extends JFrame
     public Board board;
     public PlaceShips shipPlacer;
 
-    public DisplayShipPlace(Board board, BoardLogic logic) 
+    public DisplayShipPlace(Board board)
     {
         this.board = board;
         this.currentBoard = board.getBoard();
@@ -191,7 +192,8 @@ public class DisplayShipPlace extends JFrame
 
         int shipSize = nextShip.getShipSize();
 
-        if (isHorizontal) {
+        if (isHorizontal) 
+        {
             if (x + shipSize > board.getSize()) 
             {
                 System.out.println("Preview out of bounds horizontally.");
@@ -237,6 +239,11 @@ public class DisplayShipPlace extends JFrame
         }
     }
 
+    public void setOnShipsPlacedCallback(Runnable callback)
+    {
+        this.onShipsPlacedCallback = callback;
+    }
+
     public void disabelButtons()
     {
         for (JButton[] jButtons : buttonsInGrid) 
@@ -252,6 +259,10 @@ public class DisplayShipPlace extends JFrame
     {
         disabelButtons();
         this.dispose();
+
+        if (onShipsPlacedCallback != null)
+        {
+            onShipsPlacedCallback.run();
+        }
     }
 }
-
