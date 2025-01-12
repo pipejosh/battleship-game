@@ -34,6 +34,21 @@ public class Board
         }
     } 
 
+    public boolean attack(int x, int y) 
+    {
+    
+        if (board[x][y].equals("SHIP") && isInBounds(x, y)) 
+        {
+            setHit(x, y);
+            return true; 
+        } 
+        else 
+        {
+            setMiss(x, y);
+            return false;
+        }
+    }
+
     public int getSize() 
     {
         return size;
@@ -65,5 +80,15 @@ public class Board
     public void setShip(int x, int y)
     {
         setBoardPosition(x, y, "SHIP");
+    }
+
+    public void setHit(int x, int y)
+    {
+        setBoardPosition(x, y, "HIT");
+    }
+
+    public void setMiss(int x, int y)
+    {
+        setBoardPosition(x, y, "MISS");
     }
 }
