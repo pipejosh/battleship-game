@@ -1,5 +1,7 @@
 package Ship;
 
+import java.util.ArrayList;
+
 import Board.*;
 
 public class PlaceShips 
@@ -29,6 +31,8 @@ public class PlaceShips
 
     public void placeShips(int x, int y) 
     {
+        ArrayList<Integer> currentShipCoordinate = new ArrayList<Integer>();
+
         if (shipsLeft == 0) 
         {
             System.out.println("NO MORE SHIPS LEFT");
@@ -56,6 +60,10 @@ public class PlaceShips
             {
                 board.setShip(x + i, y);
 
+                currentShipCoordinate.add(x + 1);
+                currentShipCoordinate.add(y);
+                
+                System.out.println("COORDENADA PUESTA HO"); 
                 currentShipName = currentShip.getShipName();
             }
         } 
@@ -79,11 +87,20 @@ public class PlaceShips
             {
                 board.setShip(x, y + i);
 
+                currentShipCoordinate.add(x);
+                currentShipCoordinate.add(y + i);
+                System.out.println("COORDENADA PUESTA VE"); 
+
                 currentShipName = currentShip.getShipName();
             }
         }
 
-
+        board.setCoordinates(currentShipCoordinate);
+        for (Integer integer : currentShipCoordinate) 
+        {
+            System.out.println("CURRENT ARRAY" + integer);     
+        }
+        currentShipCoordinate.clear();
         shipsLeft--;
 
     }

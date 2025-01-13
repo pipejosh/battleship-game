@@ -58,22 +58,6 @@ public class Ship {
         return isDestroyed;
     }
 
-    public void hit() 
-    {
-        if (shipHealth > 0) 
-        {
-            shipHealth--;
-            if (shipHealth == 0) 
-            {
-                isDestroyed = true; 
-            }
-        } 
-        else 
-        {
-            System.out.println("SHIP IS ALREADY DISTROYED");
-        }
-    }
-
     public ShipType getShipType() 
     {
         return shipType;

@@ -116,6 +116,7 @@ public class DisplayShipPlace extends JFrame
         shipPlacer.placeShips(x, y);
         setShipsLeftText();
         updateGUI();
+        board.printCoordinates();
 
         switch (shipsLeft)
         {

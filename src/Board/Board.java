@@ -1,9 +1,14 @@
 package Board;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Board 
 {
     private int size;
     private String[][] board; 
+    private ArrayList<ArrayList<Integer>> shipsCoordinatesOnBoard = new ArrayList<ArrayList<Integer>>();
 
     /*  BOARD ARRAY CAN CONTAIN 5 VALUES; 
         DEFAULT: empty space
@@ -85,5 +90,24 @@ public class Board
     public void setMiss(int x, int y)
     {
         setBoardPosition(x, y, "MISS");
+    }
+
+    public void setCoordinates(ArrayList<Integer> shipCoordinates)
+    {
+        shipsCoordinatesOnBoard.add(shipCoordinates);
+    }
+
+    public void printCoordinates()
+    {
+        for (ArrayList<Integer> coordinate : shipsCoordinatesOnBoard) 
+        {
+            for (Integer currentCoordinate : coordinate) 
+            {
+                System.out.println("EMPTY");
+                System.out.println(currentCoordinate);     
+            }     
+        }
+
+        System.out.println("SEPATATION"); 
     }
 }
