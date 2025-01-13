@@ -5,10 +5,9 @@ public class Board
     private int size;
     private String[][] board; 
 
-    /*  BOARD ARRAY CAN CONTAIN 6 VALUES; 
+    /*  BOARD ARRAY CAN CONTAIN 5 VALUES; 
         DEFAULT: empty space
         SHIP: ship space
-        SHIPPADDING: shot done
         MISS: shot miss
         HIT: ship hit
         DESTROYED: ship destroyed */
