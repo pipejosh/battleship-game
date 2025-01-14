@@ -92,6 +92,11 @@ public class Board
         setBoardPosition(x, y, "MISS");
     }
 
+    public void setDestroyed(int x, int y)
+    {
+        setBoardPosition(x, y, "DESTROYED");
+    }
+
     public void setCoordinates(ArrayList<Integer> shipCoordinates)
     {
         shipsCoordinatesOnBoard.add(shipCoordinates);
@@ -100,5 +105,16 @@ public class Board
     public void printCoordinates()
     {
         System.out.println(shipsCoordinatesOnBoard);
+    }
+
+    public void checkDestroyed()
+    {
+        for (int i = 0; i < shipsCoordinatesOnBoard.size(); i++) 
+        {
+            for (int j = 0; j < shipsCoordinatesOnBoard.get(i).size(); j += 2) 
+            {
+                // if 
+            }     
+        }
     }
 }
