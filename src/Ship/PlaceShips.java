@@ -63,7 +63,6 @@ public class PlaceShips
                 currentShipCoordinate.add(x + 1);
                 currentShipCoordinate.add(y);
                 
-                System.out.println("COORDENADA PUESTA HO"); 
                 currentShipName = currentShip.getShipName();
             }
         } 
@@ -89,18 +88,13 @@ public class PlaceShips
 
                 currentShipCoordinate.add(x);
                 currentShipCoordinate.add(y + i);
-                System.out.println("COORDENADA PUESTA VE"); 
+                System.out.println();
 
                 currentShipName = currentShip.getShipName();
             }
         }
 
         board.setCoordinates(currentShipCoordinate);
-        for (Integer integer : currentShipCoordinate) 
-        {
-            System.out.println("CURRENT ARRAY" + integer);     
-        }
-        currentShipCoordinate.clear();
         shipsLeft--;
 
     }

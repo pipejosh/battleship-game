@@ -99,15 +99,6 @@ public class Board
 
     public void printCoordinates()
     {
-        for (ArrayList<Integer> coordinate : shipsCoordinatesOnBoard) 
-        {
-            for (Integer currentCoordinate : coordinate) 
-            {
-                System.out.println("EMPTY");
-                System.out.println(currentCoordinate);     
-            }     
-        }
-
-        System.out.println("SEPATATION"); 
+        System.out.println(shipsCoordinatesOnBoard);
     }
 }
