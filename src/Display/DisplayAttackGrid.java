@@ -1,16 +1,14 @@
 package Display;
 
 import javax.swing.*;
+import java.awt.*;
 
 import Board.Board;
 import Board.BoardLogic;
 
-import java.awt.*;
-
 public class DisplayAttackGrid extends JFrame 
 {
     private static final Color DEFAULTCOLOR = Color.BLUE;
-    private static final Color SHIPCOLOR = Color.GREEN;
     private static final Color MISSCOLOR = Color.YELLOW;
     private static final Color HITCOLOR = Color.ORANGE;
     private static final Color DESTROYCOLOR = Color.RED;

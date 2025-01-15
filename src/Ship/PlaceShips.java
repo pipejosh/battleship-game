@@ -96,7 +96,6 @@ public class PlaceShips
 
         board.setCoordinates(currentShipCoordinate);
         shipsLeft--;
-
     }
 
     public void setIsHoriazontal(boolean newOrientation)

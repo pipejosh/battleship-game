@@ -5,8 +5,7 @@ import Board.*;
 import Ship.*;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 
 public class DisplayShipPlace extends JFrame 
 {
