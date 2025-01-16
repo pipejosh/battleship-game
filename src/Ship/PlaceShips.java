@@ -60,7 +60,7 @@ public class PlaceShips
             {
                 board.setShip(x + i, y);
 
-                currentShipCoordinate.add(x + 1);
+                currentShipCoordinate.add(x + i);
                 currentShipCoordinate.add(y);
                 
                 currentShipName = currentShip.getShipName();
