@@ -8,30 +8,16 @@ package MusicScript;
 // Imort all the necesary stuff
 import java.net.URL;
 import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.FloatControl;
-import javax.swing.JOptionPane;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
+import javax.swing.JOptionPane;
 
 public class PlayMusic 
 {
     // Initialize all the necesary variables
     public Clip clip;
     public FloatControl volumeControler;
-   
-    private final String  mainThemePath = "/Music/mainTheme.wav";
-    private final String  normalLevelTheme = "/Music/normalModetheme.wav";
-    private final String  easyLevelThemePath = "/Music/easyLevelTheme.wav";
-    private final String  hardLevelThemePath = "/Music/hardLevelTheme.wav";
-    private final String  impossibleLevelThemePath = "/Music/impossibleLevelTheme.wav";
-    private final String  configurationThemePath = "/Music/configurationTheme.wav";
-    private final String  tutorialThemePath = "/Music/tutorialTheme.wav";
-    private final String  buttonPairSoundEffectPath = "/Music/pairMatch.wav";
-    private final String  buttonClickSoundEffectPath = "/Music/buttonSelected.wav";
-    private final String  winThemePath = "/Music/winTheme.wav";
-    private final String  loseThemePath = "/Music/loseTheme.wav";
-
-    private final float  CEROVOLUME = -80.0f;
     
     // Create the defaul constructor
     public PlayMusic() 
