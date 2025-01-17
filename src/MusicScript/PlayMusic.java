@@ -91,4 +91,11 @@ public class PlayMusic
     // This method changes the volume
 
 
+    public static void main(String[] args) {
+        
+        PlayMusic test = new PlayMusic();
+
+
+        test.startSong(null, 0);
+    }
 }
