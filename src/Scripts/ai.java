@@ -1,5 +1,7 @@
 package Scripts;
 
+import Board.Board;
+import Ship.PlaceShips;
 import java.util.Random;
 
 public class ai {
@@ -14,13 +16,54 @@ public class ai {
     //и сделать так чтобы оно ходило после игрока
     //и присвоить один полигон ии-шке
     //дальше отдам на полировку напарнику
-    //йоу 52
     //так же если оно делает выстрел и попадает, дальше стреляет в правильном направлении и корабль не уничтожается (типо там конец) то оно возвращается на прошлую точку и стреляет-
     //- в противоположном направлении и уничтожает корабль
     // оно не должно выходить за рамки полигона.
 
-    Random randomX = new Random();
-    Random randomY = new Random();
+    Random random = new Random();
+    
+    int Xplace = 0;
+    int Yplace = 0;
+    int Xhit = 0;
+    int Yhit = 0;
+    Boolean randomVertical = false;
+
+    public Board aiBoard;
+    public PlaceShips shipPlacer; //для других кодов
+
+    public ai(Board board, PlaceShips shipPlace)
+    {
+        this.aiBoard = board;
+        this.shipPlacer = shipPlace;
+    } //настраивает
+
+    public void setShip()
+    {
+        
+        for (int i = 0; i < 6; i++) 
+        {
+            Xplace = random.nextInt(9);
+            Yplace = random.nextInt(9);
+            randomVertical = random.nextBoolean();
+
+            shipPlacer.setIsHoriazontal(randomVertical);
+            shipPlacer.placeShips(Xplace, Yplace);
+        }
+        
+    }
+    public void setHit()
+    {
+        Xhit = random.nextInt(9);
+        Yhit = random.nextInt(9);
+
+        aiBoard.setHit(Xhit, Yhit);
+        //if(aiBoard.)
+    }
+
+
+
+
+    
 
 
 
