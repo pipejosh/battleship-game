@@ -40,30 +40,9 @@ public class PlayMusic
     // This method starts to play the song
     public void startSong(String soundKey, int loopTimes) 
     {
-        // The variable sound path is gonna equal some music path
-        String soundPath = switch (soundKey) 
-        {
-            case "mainTheme" -> mainThemePath;
-            case "easyLevelTheme" -> easyLevelThemePath;
-            case "normalLevelTheme" -> normalLevelTheme;
-            case "hardLevelTheme" -> hardLevelThemePath;
-            case "impossibleLevelTheme" -> impossibleLevelThemePath;
-            case "configurationTheme" -> configurationThemePath;
-            case "tutorialTheme" -> tutorialThemePath;
-            case "pairEffect" -> buttonPairSoundEffectPath;
-            case "clickEffect" -> buttonClickSoundEffectPath;
-            case "winTheme" -> winThemePath;
-            case "loseTheme" -> loseThemePath;
-            default -> null;
-        };
 
-        // If its null
-        if (soundPath == null) 
-        {
-            // We let the programmer know that he need to double check
-            System.out.println("NO SOUNDS WITH THAT SPECIFIC KEY DOUBLE CHECK");  
-            return;
-        }
+        String soundPath = "MainTheme.wav";
+        
 
         // Try to exceture the action 
         try 
@@ -109,6 +88,7 @@ public class PlayMusic
             System.out.println("NO SONGS CURRENTLY PLAYING");
         }
     }
-    
     // This method changes the volume
+
+
 }
