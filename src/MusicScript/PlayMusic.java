@@ -17,8 +17,6 @@ public class PlayMusic
     // Initialize all the necesary variables
     public Clip clip;
     public FloatControl volumeControler;
-    public boolean isMuted;
-    public ReadVolumeConfig volumeConfig = new ReadVolumeConfig();
    
     private final String  mainThemePath = "/Music/mainTheme.wav";
     private final String  normalLevelTheme = "/Music/normalModetheme.wav";
@@ -37,7 +35,6 @@ public class PlayMusic
     // Create the defaul constructor
     public PlayMusic() 
     {
-        this.isMuted = volumeConfig.getIsMuted();
     }
 
     // This method starts to play the song
@@ -85,7 +82,6 @@ public class PlayMusic
             // Loop the song the timer it wants to loop
             clip.loop(loopTimes);
             // Set the song to a certain volume
-            setVolumeControl();
         }
 
         // If theres a exception
@@ -115,33 +111,4 @@ public class PlayMusic
     }
     
     // This method changes the volume
-    public void setVolumeControl()
-    {
-        // If the volume controler is null we return
-        if (volumeControler == null)
-        {
-            return;
-        }
-        
-        // If its muted 
-        if (volumeConfig.getIsMuted())
-        {
-            // We set the volume to cero
-            volumeControler.setValue(CEROVOLUME);
-        }
-        
-        // If is not muted
-        else
-        {
-            // Calculate the max and min value
-            float minimumValue = volumeControler.getMinimum();
-            float maximunValue = volumeControler.getMaximum();
-            // In base of that values calculate the new value
-            float newVolume = (volumeConfig.getVolumeValue() / 100.0f) * (maximunValue - minimumValue) + minimumValue;
-
-            // Set the new volume + save it to the config.txt file
-            volumeControler.setValue(newVolume);
-            volumeConfig.saveFile();
-        }
-    }
 }
