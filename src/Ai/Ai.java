@@ -5,6 +5,5 @@ import java.util.*;
 
 public class Ai 
 {
-
     public void determinePorcentarge()
 }
