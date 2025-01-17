@@ -9,6 +9,7 @@ package MusicScript;
 import java.net.URL;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.FloatControl;
+import javax.swing.JOptionPane;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
@@ -97,5 +98,6 @@ public class PlayMusic
 
 
         test.startSong(null, 0);
+        JOptionPane.showMessageDialog(null, "TEST", null, 0);
     }
 }
