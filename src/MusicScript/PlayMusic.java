@@ -1,11 +1,7 @@
-/*
-Cristopher Rosas
-9/12/2024 - 30/12/2024
-This class is responsible for the game music
-*/
+//this class implements the music into the game
 package MusicScript;
 
-// Imort all the necesary stuff
+
 import java.net.URL;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -15,23 +11,23 @@ import javax.swing.JOptionPane;
 
 public class PlayMusic 
 {
-    // Initialize all the necesary variables
+    
     public Clip clip;
     public FloatControl volumeControler;
     
-    // Create the defaul constructor
+    
     public PlayMusic() 
     {
     }
 
-    // This method starts to play the song
+    
     public void startSong(String soundKey, int loopTimes) 
     {
 
         String soundPath = "MainTheme.wav";
         
 
-        // Try to exceture the action 
+        //Try to excute action 
         try 
         {
             // Create the sound url
