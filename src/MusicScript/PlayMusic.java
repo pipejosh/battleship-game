@@ -3,7 +3,7 @@ Cristopher Rosas
 9/12/2024 - 30/12/2024
 This class is responsible for the game music
 */
-package Scripts;
+package MusicScript;
 
 // Imort all the necesary stuff
 import java.net.URL;
