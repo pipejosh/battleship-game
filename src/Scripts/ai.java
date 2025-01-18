@@ -39,9 +39,8 @@ public class ai {
 
     public void setShip()
     {
-        
-        for (int i = 0; i < 6; i++) 
-        {
+        while (shipPlacer.getShipsLeft() > 0)
+        { 
             Xplace = random.nextInt(9);
             Yplace = random.nextInt(9);
             randomVertical = random.nextBoolean();
@@ -49,12 +48,12 @@ public class ai {
             shipPlacer.setIsHoriazontal(randomVertical);
             shipPlacer.placeShips(Xplace, Yplace);
         }
-        
     }
+
     public void setHit()
     {
-        Xhit = random.nextInt(9);
-        Yhit = random.nextInt(9);
+        Xhit = random.nextInt(aiBoard.getSize());
+        Yhit = random.nextInt(aiBoard.getSize());
 
         aiBoard.setHit(Xhit, Yhit);
         //if(aiBoard.)
