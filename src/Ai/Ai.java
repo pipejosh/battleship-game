@@ -2,13 +2,15 @@ package Ai;
 
 import Board.*;
 import Ship.PlaceShips;
+import Display.*;
 
 import java.util.*;
 
 public class Ai 
 {
-    private Board board = new Board();
+    private static Board board = new Board();
     private PlaceShips shipPlacer = new PlaceShips(board);
+    private static DisplayViewGrid gridViewTest;
     
     private Random random = new Random();
 
@@ -41,7 +43,8 @@ public class Ai
     {
         Ai testAi = new Ai(); 
 
-        testAi.board.printBoard();
         testAi.setShips();
+
+        gridViewTest = new DisplayViewGrid(board);
     }
 }
