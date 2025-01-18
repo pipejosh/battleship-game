@@ -43,59 +43,88 @@ public class PlaceShips
 
         if (isHorizontal)
         {
-            if (x + currentShip.getShipSize() > board.getSize())
+            if (canPlaceShip(x, y))
+            {
+
+                for (int i = 0; i < currentShip.getShipSize(); i++) 
+                {
+                    board.setShip(x + i, y);
+    
+                    currentShipCoordinate.add(x + i);
+                    currentShipCoordinate.add(y);
+                    
+                    currentShipName = currentShip.getShipName();
+                }
+            }
+
+            else
             {
                 return;
             }
-
-            for (int i = 0; i < currentShip.getShipSize(); i++) 
-            {
-                if (board.getBoardPosition(x + i, y).equals("SHIP")) 
-                {
-                    return;
-                }
-            }
             
-            for (int i = 0; i < currentShip.getShipSize(); i++) 
-            {
-                board.setShip(x + i, y);
-
-                currentShipCoordinate.add(x + i);
-                currentShipCoordinate.add(y);
-                
-                currentShipName = currentShip.getShipName();
-            }
         } 
 
         else 
         {
-            if (y + currentShip.getShipSize() > board.getSize())
-            {
-                return;
-            }
 
-            for (int i = 0; i < currentShip.getShipSize(); i++) 
+            if (canPlaceShip(x, y))
             {
-                if (board.getBoardPosition(x, y + i).equals("SHIP")) 
+                for (int i = 0; i < currentShip.getShipSize(); i++) 
                 {
-                    return;
+                    board.setShip(x, y + i);
+    
+                    currentShipCoordinate.add(x);
+                    currentShipCoordinate.add(y + i);
+                    System.out.println();
+    
+                    currentShipName = currentShip.getShipName();
                 }
             }
 
-            for (int i = 0; i < currentShip.getShipSize(); i++) 
+            else
             {
-                board.setShip(x, y + i);
-
-                currentShipCoordinate.add(x);
-                currentShipCoordinate.add(y + i);
-                System.out.println();
-
-                currentShipName = currentShip.getShipName();
+                return;
             }
         }
 
         board.setCoordinates(currentShipCoordinate);
         shipsLeft--;
+    }
+
+    public boolean canPlaceShip(int x, int y)
+    {
+        if (isHorizontal)
+        {
+            if (x + currentShip.getShipSize() > board.getSize())
+            {
+                return false;
+            }
+
+            for (int i = 0; i < currentShip.getShipSize(); i++)
+            {
+                if (board.getBoardPosition(x + i, y).equals("SHIP"))
+                {
+                    return false;
+                }
+            }
+        }
+
+        else 
+        {
+            if (y + currentShip.getShipSize() > board.getSize())
+            {
+                return false;
+            }
+
+            for (int i = 0; i < currentShip.getShipSize(); i++)
+            {
+                if (board.getBoardPosition(x, y + i).equals("SHIP"))
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public void setIsHoriazontal(boolean newOrientation)
@@ -124,6 +153,7 @@ public class PlaceShips
         {
             return null;
         }
+
         Ship nextShip = ships[shipsLeft - 1];
 
         return nextShip;
