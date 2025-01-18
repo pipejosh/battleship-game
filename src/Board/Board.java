@@ -130,6 +130,11 @@ public class Board
         return board;
     }
 
+    public ArrayList<ArrayList<Integer>> getAllShipsCoordinates()
+    {
+        return shipsCoordinatesOnBoard;
+    }
+
     public void setBoardPosition(int x, int y, String value) 
     {
         if (isInBounds(x, y)) 
