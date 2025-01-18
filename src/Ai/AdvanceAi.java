@@ -9,7 +9,7 @@ public class AdvanceAi
 {
     private static Board board;
     private static Board playerBoard;
-    private PlaceShips shipPlacer = new PlaceShips(board);
+    private PlaceShips shipPlacer;
     private ArrayList<ArrayList<Integer>> playerShipsCoordinates = new ArrayList<ArrayList<Integer>>();
 
     private int hitChange = 10;
@@ -21,13 +21,15 @@ public class AdvanceAi
     private int randomY = 0;
     private boolean randomHorizontal = false;
 
-    public AdvanceAi(Board board, Board playeBoard)  
+    public AdvanceAi(Board thisBoard, Board thisPlayeBoard)  
     {
-        this.board = board;
-        this.playerBoard = playeBoard;
+        this.board = thisBoard;
+        this.playerBoard = thisPlayeBoard;
+        this.shipPlacer = new PlaceShips(thisBoard);
+
     }
 
-    public void setShips()
+    public void aiSetShips()
     {
         while (shipPlacer.getShipsLeft() > 0)
         {
