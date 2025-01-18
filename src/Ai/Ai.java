@@ -2,7 +2,6 @@ package Ai;
 
 import Board.*;
 import Ship.PlaceShips;
-import Display.*;
 
 import java.util.*;
 
@@ -105,14 +104,5 @@ public class Ai
         {
             aiMiss();
         }
-    }
-
-    public static void main(String[] args)
-    {
-        Ai testAi = new Ai(board, playerBoard); 
-
-        testAi.setShips();
-
-        gridViewTest = new DisplayViewGrid(board);
     }
 }
