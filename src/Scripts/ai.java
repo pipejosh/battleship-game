@@ -41,8 +41,8 @@ public class ai {
     {
         while (shipPlacer.getShipsLeft() > 0)
         { 
-            Xplace = random.nextInt(9);
-            Yplace = random.nextInt(9);
+            Xplace = random.nextInt(aiBoard.getSize());
+            Yplace = random.nextInt(aiBoard.getSize());
             randomVertical = random.nextBoolean();
 
             shipPlacer.setIsHoriazontal(randomVertical);
