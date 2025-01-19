@@ -19,7 +19,7 @@ public class DisplayAttackGrid extends JFrame
     public Board board;
     public BoardLogic logic;
 
-    public DisplayAttackGrid(Board board, BoardLogic logic) 
+    public DisplayAttackGrid(Board board) 
     {
         this.board = board;
         this.currentBoard = board.getBoard();
