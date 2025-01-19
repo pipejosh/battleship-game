@@ -14,14 +14,17 @@ public class DisplayAttackGrid extends JFrame
     private static final Color DESTROYCOLOR = Color.RED;
     private static final Color UNKNOWNCOLOR = Color.BLACK;
     
+    public boolean isPlayerTurn = true;
+
     public JButton[][] buttonsInGrid = new JButton[10][10];
     public String[][] currentBoard;
     public Board board;
     public BoardLogic logic;
 
-    public DisplayAttackGrid(Board board) 
+    public DisplayAttackGrid(Board board, BoardLogic logic) 
     {
         this.board = board;
+        this.logic = logic;
         this.currentBoard = board.getBoard();
         initButtons();
         initFrame();
@@ -67,16 +70,29 @@ public class DisplayAttackGrid extends JFrame
             {
                 final int row = i;
                 final int col = j;
-                buttonsInGrid[row][col].addActionListener(e -> {buttonsAction(row, col);});
+                buttonsInGrid[row][col].addActionListener(e -> {playerAction(row, col);});
             }
         }
     }
 
-    public void buttonsAction(int x, int y)
+    public void playerAction(int x, int y)
     {
         board.attack(x, y);
         buttonsInGrid[x][y].setEnabled(false);
         updateGUI();
+
+        logic.aiAttack();
+    }
+
+    public void setButtons(boolean state)
+    {
+        for (int i = 0; i < board.getSize(); i++)
+        {
+            for (int j = 0; j < board.getSize(); j++)
+            {
+                buttonsInGrid[i][j].setEnabled(state);
+            }
+        }
     }
     
     public void updateGUI()
@@ -97,5 +113,15 @@ public class DisplayAttackGrid extends JFrame
             }
         }
     } 
+
+    public void setIsPlayerTurn(boolean isPlayerTurn)
+    {
+        this.isPlayerTurn = isPlayerTurn;
+    }
+
+    public boolean getIsPlayerTurn()
+    {
+        return isPlayerTurn;
+    }
 }
 

@@ -63,6 +63,8 @@ public class AdvanceAi
             int y = selectedShip.get(randomCoordinateIndex + 1);
             
             System.out.println("AI HIT COORDINATE: (" + x + ", " + y + ")");
+
+            playerBoard.attack(x, y);
             
             selectedShip.remove(randomCoordinateIndex);
             selectedShip.remove(randomCoordinateIndex);  
@@ -87,6 +89,8 @@ public class AdvanceAi
         randomY = random.nextInt(board.getSize());
 
         playerBoard.attack(randomX, randomY);
+
+        System.out.println("AI MISSED AT: (" + randomX + ", " + randomY + ")"); 
 
         hitChange --;
     }

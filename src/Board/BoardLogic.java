@@ -14,34 +14,63 @@ public class BoardLogic
     
     private AdvanceAi ai = new AdvanceAi(aiBoard, playerBoard);
 
+
     public BoardLogic()
     {
-        shipPlace = new DisplayShipPlace(playerBoard);
-        shipPlace.setOnShipsPlacedCallback(this::onShipsPlaced);
-
-
-        changeTitles();
+        startGame();   
     }
-
-    public void changeTitles() 
+    
+    public void changeShipPlacerTitle() 
     {
-        shipPlace.setTitle("TEST");
+        shipPlace.setTitle("Place Ships");
     }
-
-    public void changeOtherTitle()
+    
+    public void changeGridTitles()
     {
-        viewShips.setTitle("TEST!!!!");
-        attackShips.setTitle("TEST!!!!!!!!!!");
+        viewShips.setTitle("Your Grid");
+        attackShips.setTitle("Enemy Grid");
     }
-
+    
     public void onShipsPlaced()
     {
         ai.aiSetShips();
         viewShips = new DisplayViewGrid(playerBoard);
-        attackShips = new DisplayAttackGrid(aiBoard);
-        changeOtherTitle();
+        attackShips = new DisplayAttackGrid(aiBoard, this);
+        changeGridTitles();
+
     }
     
+    public void startGame()
+    {
+        shipPlace = new DisplayShipPlace(playerBoard);
+        shipPlace.setOnShipsPlacedCallback(this::onShipsPlaced);
+
+        changeShipPlacerTitle();
+    }
+
+
+    public void playerAttack()
+    {
+        attackShips.setButtons(true);
+    }
+    
+    public void aiAttack()
+    {
+        ai.aiAttack();
+    }
+
+    public boolean isPlayerTurn()
+    {
+        return attackShips.getIsPlayerTurn();
+    }
+
+    public void endPlayerTurn()
+    {
+        attackShips.setIsPlayerTurn(false);
+        attackShips.setButtons(false);
+        aiAttack();
+    }
+
     public static void main(String[] args) 
     {
         new BoardLogic(); 

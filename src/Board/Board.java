@@ -82,18 +82,16 @@ public class Board
 
         }
         shipsLeft --;
-        checkWin();
     }
 
-    public void checkWin()
+    public boolean hasWon()
     {
         if (shipsLeft <= 0)
         {
-            System.out.println("WIN");
-            return; 
+            return true;
         }
-        System.out.println("NO WIN");
 
+        return false;
     }
 
     public ArrayList<int[]> getShipCoordinates(int x, int y)
