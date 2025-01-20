@@ -9,7 +9,7 @@ import Board.BoardLogic;
 public class DisplayAttackGrid extends JFrame 
 {
     private static final Color DEFAULTCOLOR = Color.BLUE;
-    private static final Color MISSCOLOR = Color.YELLOW;
+    private static final Color MISSCOLOR = new Color(0, 0, 100);
     private static final Color HITCOLOR = Color.ORANGE;
     private static final Color DESTROYCOLOR = Color.RED;
     private static final Color UNKNOWNCOLOR = Color.BLACK;
