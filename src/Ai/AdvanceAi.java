@@ -85,8 +85,14 @@ public class AdvanceAi
     
     public void aiMiss()
     {
-        randomX = random.nextInt(board.getSize());
-        randomY = random.nextInt(board.getSize());
+
+        do 
+        {
+            randomX = random.nextInt(board.getSize());
+            randomY = random.nextInt(board.getSize());
+        }
+
+        while (!playerBoard.getBoardPosition(randomX, randomY).equals("DEFAULT"));
 
         playerBoard.attack(randomX, randomY);
 
