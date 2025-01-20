@@ -82,6 +82,7 @@ public class DisplayAttackGrid extends JFrame
         board.attack(x, y);
         buttonsState[x][y] = false;
         updateGUI();
+        setButtons(false);
 
         logic.aiAttack();
 

@@ -57,9 +57,7 @@ public class BoardLogic
     
     public void aiAttack()
     {
-        attackShips.setButtons(false);
         ai.aiAttack();
-        attackShips.setButtons(true);
     }
 
     public boolean isPlayerTurn()
