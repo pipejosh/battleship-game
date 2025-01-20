@@ -27,53 +27,48 @@ public class PlayMusic
         String soundPath = "MainTheme.wav";
         
 
-        //Try to excute action 
+        //this is the try-catch that allows the music to play in a loop
         try 
         {
-            // Create the sound url
+            //This creates the sound url
             URL soundUrl = getClass().getResource(soundPath);
             AudioInputStream audioInput = AudioSystem.getAudioInputStream(soundUrl);
 
-            // Start the song
+            //This starts the song
             clip = AudioSystem.getClip();
             clip.open(audioInput);
 
-            // Create the volume controler
             volumeControler = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
             
-            // Loop the song the timer it wants to loop
+            //this clip.loop loops the background music
             clip.loop(loopTimes);
-            // Set the song to a certain volume
+           
         }
 
-        // If theres a exception
         catch (Exception e)
         {
-            // Print the error + message
+            
             e.printStackTrace();
             System.out.println("AN ERROR OCCUR WHILE PLAYING THE SONG");
         }
     }
 
-    // This method stops the song
     public void stopSong() 
     {
-        // If the clip is different from null
+        //the clip stops if it comes back null
         if (clip != null)
         {
-            // We stop
+            
             clip.stop();
         }
-        // If the clip is null
+        
         else
         {
-            // We display that there are no songs currently playing
             System.out.println("NO SONGS CURRENTLY PLAYING");
         }
     }
-    // This method changes the volume
 
-
+//this is a test to make sure the music works
     public static void main(String[] args) {
         
         PlayMusic test = new PlayMusic();
