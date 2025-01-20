@@ -18,6 +18,7 @@ public class DisplayAttackGrid extends JFrame
 
     public JButton[][] buttonsInGrid = new JButton[10][10];
     public String[][] currentBoard;
+    public boolean[][] buttonsState = new boolean[10][10]; 
     public Board board;
     public BoardLogic logic;
 
@@ -78,10 +79,12 @@ public class DisplayAttackGrid extends JFrame
     public void playerAction(int x, int y)
     {
         board.attack(x, y);
-        buttonsInGrid[x][y].setEnabled(false);
+        buttonsState[x][y] = false;
         updateGUI();
 
         logic.aiAttack();
+
+        updateGUI();
     }
 
     public void setButtons(boolean state)
@@ -110,6 +113,8 @@ public class DisplayAttackGrid extends JFrame
                     case "DESTROYED" ->  buttonsInGrid[i][j].setBackground(DESTROYCOLOR);
                     default -> buttonsInGrid[i][j].setBackground(UNKNOWNCOLOR);
                 }
+
+                buttonsInGrid[i][j].setEnabled(buttonsState[i][j]);
             }
         }
     } 
@@ -122,6 +127,17 @@ public class DisplayAttackGrid extends JFrame
     public boolean getIsPlayerTurn()
     {
         return isPlayerTurn;
+    }
+
+    public void initializeButtons()
+    {
+        for (int i = 0; i < buttonsInGrid.length; i++) 
+        {
+            for (int j = 0; j < buttonsInGrid.length; j++) 
+            {
+                buttonsState[i][j] = true;     
+            }     
+        }
     }
 }
 
