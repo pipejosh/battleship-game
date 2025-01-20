@@ -17,6 +17,7 @@ public class BoardLogic
 
     public BoardLogic()
     {
+
         startGame();   
     }
     
