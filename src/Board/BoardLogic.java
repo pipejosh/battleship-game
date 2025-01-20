@@ -1,7 +1,7 @@
 package Board;
 
-import Display.*;
 import Ai.*;
+import Display.*;
 
 public class BoardLogic 
 { 
@@ -23,7 +23,7 @@ public class BoardLogic
     
     public void changeShipPlacerTitle() 
     {
-        shipPlace.setTitle("Place Ships");
+        shipPlace.setTitle("Place Your Ships");
     }
     
     public void changeGridTitles()
