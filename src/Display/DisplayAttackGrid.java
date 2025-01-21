@@ -79,11 +79,12 @@ public class DisplayAttackGrid extends JFrame
 
     public void playerAction(int x, int y)
     {
+        blackButtons();
         board.attack(x, y);
         buttonsState[x][y] = false;
         logic.setIsPlayerTurn(false);
-        
         updateGUI();
+        
     }
 
     public void setButtons(boolean state)

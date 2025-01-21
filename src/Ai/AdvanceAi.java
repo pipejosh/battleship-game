@@ -13,7 +13,7 @@ public class AdvanceAi
     private PlaceShips shipPlacer;
     private ArrayList<ArrayList<Integer>> playerShipsCoordinates = new ArrayList<ArrayList<Integer>>();
 
-    private int hitChange = 10;
+    private int hitChange = 7;
 
     private Random random = new Random();
     
@@ -111,14 +111,17 @@ public class AdvanceAi
         int magicNumber = 1;
         int randomHitChange = random.nextInt(hitChange) + 1;
 
-        if (randomHitChange == magicNumber)
+        System.out.println("CURRENT HIT CHANCE: " + hitChange);
+        System.out.println("RANDOM HIT CHANGE: " + randomHitChange);
+
+        if (randomHitChange <= magicNumber)
         {
             aiHit();
         }
 
         else
         {
-            aiHit();
+            aiMiss();
         }
     }
 }
