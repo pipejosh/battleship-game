@@ -81,11 +81,8 @@ public class DisplayAttackGrid extends JFrame
     {
         board.attack(x, y);
         buttonsState[x][y] = false;
-        updateGUI();
-        setButtons(false);
-
-        logic.aiAttack();
-
+        logic.setIsPlayerTurn(false);
+        
         updateGUI();
     }
 
@@ -121,16 +118,6 @@ public class DisplayAttackGrid extends JFrame
         }
     } 
 
-    public void setIsPlayerTurn(boolean isPlayerTurn)
-    {
-        this.isPlayerTurn = isPlayerTurn;
-    }
-
-    public boolean getIsPlayerTurn()
-    {
-        return isPlayerTurn;
-    }
-
     public void initializeButtons()
     {
         for (int i = 0; i < buttonsInGrid.length; i++) 
@@ -142,4 +129,3 @@ public class DisplayAttackGrid extends JFrame
         }
     }
 }
-
