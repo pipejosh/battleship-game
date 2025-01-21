@@ -114,13 +114,13 @@ public class BoardLogic
     {
         if (aiBoard.hasWon())
         {
-            System.out.println("THE AI WINS");
+            System.out.println("THE PLAYER WINS");
             updateTimer.stop();
         }
-
+        
         else if (playerBoard.hasWon())
         {
-            System.out.println("THE PLAYER WINS");
+            System.out.println("THE AI WINS");
             updateTimer.stop();
         }
     }
