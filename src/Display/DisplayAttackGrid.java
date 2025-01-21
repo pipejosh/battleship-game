@@ -1,10 +1,9 @@
 package Display;
 
-import javax.swing.*;
-import java.awt.*;
-
 import Board.Board;
 import Board.BoardLogic;
+import java.awt.*;
+import javax.swing.*;
 
 public class DisplayAttackGrid extends JFrame 
 {
@@ -13,7 +12,7 @@ public class DisplayAttackGrid extends JFrame
     private static final Color HITCOLOR = Color.ORANGE;
     private static final Color DESTROYCOLOR = Color.RED;
     private static final Color UNKNOWNCOLOR = Color.BLACK;
-    
+    //this group of code determines what colour the grid, ships, hit, etc...
     public boolean isPlayerTurn = true;
 
     public JButton[][] buttonsInGrid = new JButton[10][10];

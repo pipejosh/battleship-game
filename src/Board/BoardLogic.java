@@ -3,7 +3,6 @@ package Board;
 import Ai.*;
 import Display.*;
 import MusicScript.*;
-
 import javax.swing.*;
 public class BoardLogic 
 { 
@@ -40,6 +39,7 @@ public class BoardLogic
     public void onShipsPlaced()
     {
         musicPlayer.stopSong();
+        //the music player activates when the game opens and stops after the ships are don ebeing placed
         ai.aiSetShips();
         viewShips = new DisplayViewGrid(playerBoard);
         attackShips = new DisplayAttackGrid(aiBoard, this);
