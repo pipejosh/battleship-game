@@ -62,7 +62,7 @@ public class DisplayViewGrid extends JFrame
 
     public void starTimer()
     {
-        updateTimer = new Timer(500, e -> updateGUI());
+        updateTimer = new Timer(1000, e -> updateGUI());
         updateTimer.start();
     }
     
