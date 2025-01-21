@@ -52,7 +52,7 @@ public class AdvanceAi
     {
         playerShipsCoordinates = playerBoard.getShipCoordinates();
         
-        if (playerShipsCoordinates.size() > 0) 
+        if (playerBoard.shipsLeft > 0) 
         {
             ArrayList<Integer> selectedShip;
 
@@ -61,7 +61,6 @@ public class AdvanceAi
             
             do
             {
-                
                 int randomShipIndex = random.nextInt(playerShipsCoordinates.size());
                 
                 selectedShip = playerShipsCoordinates.get(randomShipIndex);
@@ -73,10 +72,9 @@ public class AdvanceAi
                 
             }
 
-            while (playerBoard.getBoardPosition(x, y).equals("HIT") && playerBoard.getBoardPosition(x, y).equals("DESTROYED"));
-            
-            playerBoard.attack(x, y);
+            while (playerBoard.getBoardPosition(x, y).equals("HIT") || playerBoard.getBoardPosition(x, y).equals("DESTROYED"));
 
+            playerBoard.attack(x, y);
             
             System.out.println("AI HIT COORDINATE: (" + x + ", " + y + ")");
 
