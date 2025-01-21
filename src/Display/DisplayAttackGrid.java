@@ -118,6 +118,17 @@ public class DisplayAttackGrid extends JFrame
         }
     } 
 
+    public void blackButtons()
+    {
+        for (JButton[] jButtons : buttonsInGrid) 
+        {
+            for (JButton jButton : jButtons) 
+            {
+                jButton.setBackground(UNKNOWNCOLOR);     
+            }     
+        }
+    }
+
     public void initializeButtons()
     {
         for (int i = 0; i < buttonsInGrid.length; i++) 

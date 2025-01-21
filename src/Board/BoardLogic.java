@@ -2,6 +2,7 @@ package Board;
 
 import Ai.*;
 import Display.*;
+import MusicScript.*;
 
 import javax.swing.*;
 public class BoardLogic 
@@ -18,10 +19,10 @@ public class BoardLogic
     private AdvanceAi ai = new AdvanceAi(aiBoard, playerBoard);
 
     private boolean isPlayerTurn = false;
+    private PlayMusic musicPlayer = new PlayMusic();
 
     public BoardLogic()
     {
-
         startGame();   
     }
     
@@ -38,6 +39,7 @@ public class BoardLogic
     
     public void onShipsPlaced()
     {
+        musicPlayer.stopSong();
         ai.aiSetShips();
         viewShips = new DisplayViewGrid(playerBoard);
         attackShips = new DisplayAttackGrid(aiBoard, this);
@@ -64,6 +66,7 @@ public class BoardLogic
     {
         shipPlace = new DisplayShipPlace(playerBoard);
         shipPlace.setOnShipsPlacedCallback(this::onShipsPlaced);
+        musicPlayer.startSong(null, 0);
 
         changeShipPlacerTitle();
     }
@@ -92,7 +95,7 @@ public class BoardLogic
     {
         try
         {
-            Thread.sleep(3 * 1000);    
+            Thread.sleep(2 * 1000);    
         }
         
         catch (Exception e)

@@ -69,12 +69,4 @@ public class PlayMusic
     }
 
 //this is a test to make sure the music works
-    public static void main(String[] args) {
-        
-        PlayMusic test = new PlayMusic();
-
-
-        test.startSong(null, 0);
-        JOptionPane.showMessageDialog(null, "TEST", null, 0);
-    }
 }
