@@ -80,6 +80,8 @@ public class Board
 
                     setDestroyed(x, y);
                 }
+
+                shipsLeft --;
             }
         }
     }
