@@ -8,7 +8,7 @@ public class Board
     private int size;
     private String[][] board; 
     private ArrayList<ArrayList<Integer>> shipsCoordinatesOnBoard = new ArrayList<ArrayList<Integer>>();
-    private int shipsLeft = 6;
+    public int shipsLeft = 6;
 
     /*  BOARD ARRAY CAN CONTAIN 5 VALUES; 
         DEFAULT: empty space
@@ -36,85 +36,66 @@ public class Board
     } 
 
 
-    public boolean attack(int x, int y) 
+    public void attack(int x, int y) 
     {
         if (board[x][y].equals("SHIP") && isInBounds(x, y)) 
         {
             setHit(x, y);
-            ArrayList<int[]> shipCoordinates = getShipCoordinates(x, y);
 
-            if (isShipDestroyed(shipCoordinates))
-            {
-                updateShipToDestroyed(shipCoordinates);
-            }
-            return true; 
+            checkDestoyedShips();
         } 
 
         else 
         {
             setMiss(x, y);
-            return false;
         }
     }
 
-    public boolean isShipDestroyed(ArrayList<int[]> shipCoordinates)
+    public void checkDestoyedShips()
     {
-        for (int[] coord : shipCoordinates)
+        for (int i = 0; i < shipsCoordinatesOnBoard.size(); i++)
         {
-            int x = coord[0];
-            int y = coord[1];
-            if (!board[x][y].equals("HIT"))
+            ArrayList<Integer> shipCoordinates = shipsCoordinatesOnBoard.get(i);
+            
+            int hitsCounter = 0;
+
+            for (int j = 0; j < shipCoordinates.size(); j+=2)
             {
-                return false;
-            }
-        }
+                int x = shipCoordinates.get(j); 
+                int y = shipCoordinates.get(j + 1);
 
-        return true;
-    }
-
-    public void updateShipToDestroyed(ArrayList<int[]> shipCoordinates)
-    {
-        for (int[] coord : shipCoordinates)
-        {
-            int x = coord[0];
-            int y = coord[1];
-            setBoardPosition(x, y, "DESTROYED");
-
-        }
-        shipsLeft --;
-        checkWin();
-    }
-
-    public void checkWin()
-    {
-        if (shipsLeft <= 0)
-        {
-            System.out.println("WIN");
-            return; 
-        }
-        System.out.println("NO WIN");
-
-    }
-
-    public ArrayList<int[]> getShipCoordinates(int x, int y)
-    {
-        ArrayList<int[]> shipCoordinates = new ArrayList<>();
-        for (ArrayList<Integer> ship : shipsCoordinatesOnBoard)
-        {
-            for (int i = 0; i < ship.size(); i += 2)
-            {
-                if (ship.get(i) == x && ship.get(i + 1) == y)
+                if (getBoardPosition(x, y).equals("HIT"))
                 {
-                    for (int j = 0; j < ship.size(); j += 2)
-                    {
-                        shipCoordinates.add(new int[]{ship.get(j), ship.get(j + 1)});
-                    }
-                    return shipCoordinates;
+                    hitsCounter ++;
+                }
+            }
+
+            if (hitsCounter == shipCoordinates.size() / 2)
+            {
+                for (int k = 0; k < shipCoordinates.size(); k +=2)
+                {
+                    System.out.println("SE ESTA DESTRUYENDO BARQUITOS");
+                    int x = shipCoordinates.get(k);
+                    int y = shipCoordinates.get(k + 1);
+
+                    setDestroyed(x, y);
                 }
             }
         }
-        return shipCoordinates;
     }
+
+
+    public boolean hasWon()
+    {
+        if (shipsLeft <= 0)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+
     public int getSize() 
     {
         return size;
@@ -130,7 +111,7 @@ public class Board
         return board;
     }
 
-    public ArrayList<ArrayList<Integer>> getAllShipsCoordinates()
+    public ArrayList<ArrayList<Integer>> getShipCoordinates()
     {
         return shipsCoordinatesOnBoard;
     }

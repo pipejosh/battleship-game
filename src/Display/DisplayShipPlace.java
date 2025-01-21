@@ -129,8 +129,8 @@ public class DisplayShipPlace extends JFrame
 
         switch (counter % 2)
         {
-            case 1 -> shipPlacer.setIsHoriazontal(true);
-            case 0 -> shipPlacer.setIsHoriazontal(false);
+            case 1 -> shipPlacer.setIsHorizontal(true);
+            case 0 -> shipPlacer.setIsHorizontal(false);
         }
 
         System.out.println("SE CAMBIO LA HORINETACION " + shipPlacer.getIsHorizontal());
