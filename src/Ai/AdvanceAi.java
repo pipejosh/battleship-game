@@ -7,8 +7,9 @@ import java.util.*;
 
 public class AdvanceAi 
 {
-    private static Board board;
-    private static Board playerBoard;
+    private Board board;
+    private Board playerBoard;
+    private String[][] playerCurrentBoard;
     private PlaceShips shipPlacer;
     private ArrayList<ArrayList<Integer>> playerShipsCoordinates = new ArrayList<ArrayList<Integer>>();
 
@@ -21,12 +22,12 @@ public class AdvanceAi
     private int randomY = 0;
     private boolean randomHorizontal = false;
 
-    public AdvanceAi(Board thisBoard, Board thisPlayeBoard)  
+    public AdvanceAi(Board thisBoard, Board playerBoard)  
     {
         this.board = thisBoard;
-        this.playerBoard = thisPlayeBoard;
-        this.shipPlacer = new PlaceShips(thisBoard);
-
+        this.playerBoard = playerBoard;
+        this.playerCurrentBoard = playerBoard.getBoard();
+        this.shipPlacer = new PlaceShips(board);
     }
 
     public void aiSetShips()
@@ -36,7 +37,8 @@ public class AdvanceAi
             randomHorizontal = random.nextBoolean();
             randomX = random.nextInt(board.getSize());
             randomY = random.nextInt(board.getSize());
-            shipPlacer.setIsHoriazontal(randomHorizontal);
+
+            shipPlacer.setIsHorizontal(randomHorizontal);
             shipPlacer.placeShips(randomX, randomY);
         }
     }
@@ -48,31 +50,35 @@ public class AdvanceAi
 
     public void aiHit() 
     {
-        playerShipsCoordinates = playerBoard.getAllShipsCoordinates();
+        playerShipsCoordinates = playerBoard.getShipCoordinates();
         
         if (playerShipsCoordinates.size() > 0) 
         {
+            ArrayList<Integer> selectedShip;
+
+            int x = 0;
+            int y = 0;
             
-            int randomShipIndex = random.nextInt(playerShipsCoordinates.size());
+            do
+            {
+                
+                int randomShipIndex = random.nextInt(playerShipsCoordinates.size());
+                
+                selectedShip = playerShipsCoordinates.get(randomShipIndex);
+                
+                int randomCoordinateIndex = random.nextInt(selectedShip.size() / 2) * 2; 
+                
+                x = selectedShip.get(randomCoordinateIndex);
+                y = selectedShip.get(randomCoordinateIndex + 1);
+                
+            }
+
+            while (playerBoard.getBoardPosition(x, y).equals("HIT") && playerBoard.getBoardPosition(x, y).equals("DESTROYED"));
             
-            ArrayList<Integer> selectedShip = playerShipsCoordinates.get(randomShipIndex);
-            
-            int randomCoordinateIndex = random.nextInt(selectedShip.size() / 2) * 2; 
-            
-            int x = selectedShip.get(randomCoordinateIndex);
-            int y = selectedShip.get(randomCoordinateIndex + 1);
+            playerBoard.attack(x, y);
+
             
             System.out.println("AI HIT COORDINATE: (" + x + ", " + y + ")");
-
-            playerBoard.attack(x, y);
-            
-            selectedShip.remove(randomCoordinateIndex);
-            selectedShip.remove(randomCoordinateIndex);  
-            
-            if (selectedShip.isEmpty()) 
-            {
-                playerShipsCoordinates.remove(randomShipIndex);
-            }
 
             hitChange++;
         }
@@ -114,7 +120,7 @@ public class AdvanceAi
 
         else
         {
-            aiMiss();
+            aiHit();
         }
     }
 }

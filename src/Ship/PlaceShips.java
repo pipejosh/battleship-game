@@ -75,7 +75,6 @@ public class PlaceShips
     
                     currentShipCoordinate.add(x);
                     currentShipCoordinate.add(y + i);
-                    System.out.println();
     
                     currentShipName = currentShip.getShipName();
                 }
@@ -127,7 +126,7 @@ public class PlaceShips
         return true;
     }
 
-    public void setIsHoriazontal(boolean newOrientation)
+    public void setIsHorizontal(boolean newOrientation)
     {
         this.isHorizontal = newOrientation;
     }
