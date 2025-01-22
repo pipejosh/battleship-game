@@ -4,16 +4,19 @@
  */
 package Forms;
 
+import Board.*;
+
 /**
  *
  * @author Crist
  */
+
 public class MainMenu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainMenu
-     */
-    public MainMenu() {
+    private BoardLogic game;
+
+    public MainMenu() 
+    {
         initComponents();
     }
 
@@ -34,7 +37,6 @@ public class MainMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 153, 204));
-        setPreferredSize(new java.awt.Dimension(500, 500));
         setSize(new java.awt.Dimension(500, 500));
 
         SettingButton.setBackground(new java.awt.Color(137, 87, 64));
@@ -44,6 +46,11 @@ public class MainMenu extends javax.swing.JFrame {
         PlayButton.setBackground(new java.awt.Color(137, 87, 64));
         PlayButton.setFont(new java.awt.Font("Impact", 0, 36)); // NOI18N
         PlayButton.setText("Play");
+        PlayButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PlayButtonActionPerformed(evt);
+            }
+        });
 
         NameLabel.setFont(new java.awt.Font("Impact", 0, 48)); // NOI18N
         NameLabel.setText("Battleship Game");
@@ -51,6 +58,11 @@ public class MainMenu extends javax.swing.JFrame {
         ExitButton1.setBackground(new java.awt.Color(137, 87, 64));
         ExitButton1.setFont(new java.awt.Font("Impact", 0, 36)); // NOI18N
         ExitButton1.setText("Exit");
+        ExitButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExitButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -90,6 +102,17 @@ public class MainMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void PlayButtonActionPerformed(java.awt.event.ActionEvent evt) 
+    {//GEN-FIRST:event_PlayButtonActionPerformed
+        game = new BoardLogic();
+        this.dispose();
+    }//GEN-LAST:event_PlayButtonActionPerformed
+
+    private void ExitButton1ActionPerformed(java.awt.event.ActionEvent evt) 
+    {//GEN-FIRST:event_ExitButton1ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_ExitButton1ActionPerformed
 
     /**
      * @param args the command line arguments

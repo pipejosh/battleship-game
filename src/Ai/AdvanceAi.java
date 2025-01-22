@@ -9,7 +9,6 @@ public class AdvanceAi
 {
     private Board board;
     private Board playerBoard;
-    private String[][] playerCurrentBoard;
     private PlaceShips shipPlacer;
     private ArrayList<ArrayList<Integer>> playerShipsCoordinates = new ArrayList<ArrayList<Integer>>();
 
@@ -26,7 +25,6 @@ public class AdvanceAi
     {
         this.board = thisBoard;
         this.playerBoard = playerBoard;
-        this.playerCurrentBoard = playerBoard.getBoard();
         this.shipPlacer = new PlaceShips(board);
     }
 
