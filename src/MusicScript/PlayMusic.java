@@ -7,7 +7,6 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
-import javax.swing.JOptionPane;
 
 public class PlayMusic 
 {
@@ -21,11 +20,18 @@ public class PlayMusic
     }
 
     
-    public void startSong(String soundKey, int loopTimes) 
+    public void startSong(int song, int loopTimes) 
     {
 
-        String soundPath = "MainTheme.wav";
-        
+        String boatPlacement = "MainTheme.wav";
+        String actualGame = "GameTheme.wav";
+        String soundPath = "";
+
+        switch (song)
+        {
+            case 0 -> soundPath = boatPlacement;
+            case 1 -> soundPath = actualGame;
+        }
 
         //this is the try-catch that allows the music to play in a loop
         try 

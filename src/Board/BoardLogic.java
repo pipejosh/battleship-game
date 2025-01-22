@@ -47,6 +47,7 @@ public class BoardLogic
     public void onShipsPlaced()
     {
         musicPlayer.stopSong();
+        musicPlayer.startSong(1, 10000);
         //the music player activates when the game opens and stops after the ships are don ebeing placed
         ai.aiSetShips();
         viewShips = new DisplayViewGrid(playerBoard);
@@ -77,7 +78,7 @@ public class BoardLogic
     {
         shipPlace = new DisplayShipPlace(playerBoard);
         shipPlace.setOnShipsPlacedCallback(this::onShipsPlaced);
-        musicPlayer.startSong(null, 0);
+        musicPlayer.startSong(0, 0);
 
         changeShipPlacerTitle();
     }
@@ -138,6 +139,7 @@ public class BoardLogic
             System.out.println("THE PLAYER WINS");
             updateTimer.stop();
             closeWindows();
+            musicPlayer.stopSong();
         }
         
         else if (playerBoard.hasWon())
@@ -146,6 +148,7 @@ public class BoardLogic
             System.out.println("THE AI WINS");
             updateTimer.stop();
             closeWindows();
+            musicPlayer.stopSong();
         }
     }
 
