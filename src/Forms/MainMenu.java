@@ -4,6 +4,8 @@
  */
 package Forms;
 
+import javax.swing.JFrame;
+
 import Board.*;
 
 /**
@@ -11,13 +13,14 @@ import Board.*;
  * @author Crist
  */
 
-public class MainMenu extends javax.swing.JFrame {
+public class MainMenu extends JFrame {
 
-    // private BoardLogic game = new BoardLogic();
+    public BoardLogic game;
 
     public MainMenu() 
     {
         initComponents();
+        game = new BoardLogic();
     }
 
     /**
