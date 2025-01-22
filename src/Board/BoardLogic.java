@@ -22,7 +22,7 @@ public class BoardLogic
 
     public BoardLogic()
     {
-        startGame();   
+        // startGame();   
     }
     
     public void changeShipPlacerTitle() 
@@ -127,4 +127,13 @@ public class BoardLogic
             updateTimer.stop();
         }
     }
+
+    public void startsActualGame()
+    {
+        startGame();
+    }
+
+    // public static void main(String[] args) {
+    //     new BoardLogic();
+    // }
 }

@@ -13,7 +13,7 @@ import Board.*;
 
 public class MainMenu extends javax.swing.JFrame {
 
-    private BoardLogic game;
+    // private BoardLogic game = new BoardLogic();
 
     public MainMenu() 
     {
@@ -105,7 +105,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void PlayButtonActionPerformed(java.awt.event.ActionEvent evt) 
     {//GEN-FIRST:event_PlayButtonActionPerformed
-        game = new BoardLogic();
+        game.startsActualGame();
         this.dispose();
     }//GEN-LAST:event_PlayButtonActionPerformed
 
