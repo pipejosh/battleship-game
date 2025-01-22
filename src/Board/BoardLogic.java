@@ -138,8 +138,4 @@ public class BoardLogic
     {
         startGame();
     }
-
-    public static void main(String[] args) {
-        new BoardLogic();
-    }
 }
