@@ -4,16 +4,19 @@
  */
 package Forms;
 
+import Board.*;
+
 /**
  *
  * @author Crist
  */
+
 public class MainMenu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainMenu
-     */
-    public MainMenu() {
+    private BoardLogic game;
+
+    public MainMenu() 
+    {
         initComponents();
     }
 
@@ -100,12 +103,15 @@ public class MainMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void PlayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlayButtonActionPerformed
-        // TODO add your handling code here:
+    private void PlayButtonActionPerformed(java.awt.event.ActionEvent evt) 
+    {//GEN-FIRST:event_PlayButtonActionPerformed
+        game = new BoardLogic();
+        this.dispose();
     }//GEN-LAST:event_PlayButtonActionPerformed
 
-    private void ExitButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitButton1ActionPerformed
-        // TODO add your handling code here:
+    private void ExitButton1ActionPerformed(java.awt.event.ActionEvent evt) 
+    {//GEN-FIRST:event_ExitButton1ActionPerformed
+        System.exit(0);
     }//GEN-LAST:event_ExitButton1ActionPerformed
 
     /**

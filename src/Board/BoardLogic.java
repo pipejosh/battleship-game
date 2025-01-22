@@ -127,9 +127,4 @@ public class BoardLogic
             updateTimer.stop();
         }
     }
-
-    public static void main(String[] args) 
-    {
-        new BoardLogic(); 
-    }
 }
