@@ -1,9 +1,8 @@
-package Scripts;
+package Main;
 
 import Board.*;
-import Display.*;
 
-public class Test 
+public class Main 
 {
     public BoardLogic test;
     public static void main(String[] args) 

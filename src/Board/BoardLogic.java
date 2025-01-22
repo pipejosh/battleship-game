@@ -4,6 +4,7 @@ import Ai.*;
 import Display.*;
 import MusicScript.*;
 import javax.swing.*;
+import Forms.*;
 public class BoardLogic 
 { 
     private Timer updateTimer;
@@ -19,6 +20,9 @@ public class BoardLogic
 
     private boolean isPlayerTurn = false;
     private PlayMusic musicPlayer = new PlayMusic();
+
+    public Lose loseForm = new Lose();
+    public YouWin winForm = new YouWin();
 
     public BoardLogic()
     {
@@ -95,7 +99,7 @@ public class BoardLogic
     {
         try
         {
-            Thread.sleep(2 * 1000);    
+            // Thread.sleep(2 * 1000);    
         }
         
         catch (Exception e)
@@ -117,12 +121,14 @@ public class BoardLogic
     {
         if (aiBoard.hasWon())
         {
+            winForm.setVisible(true);
             System.out.println("THE PLAYER WINS");
             updateTimer.stop();
         }
         
         else if (playerBoard.hasWon())
         {
+            loseForm.setVisible(true); 
             System.out.println("THE AI WINS");
             updateTimer.stop();
         }

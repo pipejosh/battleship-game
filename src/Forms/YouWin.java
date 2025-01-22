@@ -4,6 +4,8 @@
  */
 package Forms;
 
+import Main.*;
+
 /**
  *
  * @author elizabeths10
@@ -84,12 +86,14 @@ public class YouWin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void playAgainButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playAgainButtonActionPerformed
-        // TODO add your handling code here:
+    private void playAgainButtonActionPerformed(java.awt.event.ActionEvent evt) 
+    {//GEN-FIRST:event_playAgainButtonActionPerformed
+        Main main = new Main();
     }//GEN-LAST:event_playAgainButtonActionPerformed
 
-    private void quitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitButtonActionPerformed
-        // TODO add your handling code here:
+    private void quitButtonActionPerformed(java.awt.event.ActionEvent evt) 
+    {//GEN-FIRST:event_quitButtonActionPerformed
+        System.exit(0);
     }//GEN-LAST:event_quitButtonActionPerformed
 
     /**
