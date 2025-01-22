@@ -9,6 +9,7 @@ import java.awt.event.*;
 
 public class DisplayShipPlace extends JFrame 
 {
+    // Declare stuff
     private static final Color DEFAULTCOLOR = Color.BLUE;
     private static final Color SHIPCOLOR = Color.GREEN;
     private static final Color UNKNOWNCOLOR = Color.BLACK;
@@ -24,6 +25,7 @@ public class DisplayShipPlace extends JFrame
     public Board board;
     public PlaceShips shipPlacer;
 
+    // Constructor
     public DisplayShipPlace(Board board)
     {
         this.board = board;
@@ -33,6 +35,7 @@ public class DisplayShipPlace extends JFrame
         initFrame();
     }
     
+    // Creates the Jframe
     public void initFrame()
     {
         setSize(800, 800);
@@ -42,6 +45,7 @@ public class DisplayShipPlace extends JFrame
         updateGUI();
     }
 
+    // Creates all the buttons and the labels and the buttons to change orientation
     public void initComponents() 
     {
         JPanel pnlControl = new JPanel();
@@ -83,6 +87,7 @@ public class DisplayShipPlace extends JFrame
         addButtonsMouseListener();
     }
 
+    // Add an action listener for every button to do the same except the change orientation one that one has a different action
     public void addButtonsActionListener()
     {
         for (int i = 0; i < board.getSize(); i++) 
@@ -98,18 +103,22 @@ public class DisplayShipPlace extends JFrame
         btnChangeOrientation.addActionListener(e -> {buttonChangeOrientationAction();});
     }
 
+    // Sets how many ships left you have
     public void setShipsLeftText()
     {
         lblShipsLeft.setText("Ships Left: " + shipPlacer.getShipsLeft());
     }
 
+    // Sets the new text of that label
     public void setOrientationText()
     {
         lblOrientation.setText("Current Orientation: " + (shipPlacer.getIsHorizontal() ? "Vertical" : "Horizontal") );
     }
 
+    // The actions of every button
     public void buttonsInGridAction(int x, int y)
     {
+        // Ships left place the ship updates the GUI and if is the last ship call the runnable
         int shipsLeft = shipPlacer.getShipsLeft();
 
         shipPlacer.placeShips(x, y);
@@ -123,8 +132,10 @@ public class DisplayShipPlace extends JFrame
         }
     }
 
+    // Changes the orientation of the ship placement
     public void buttonChangeOrientationAction()
     {
+        // If the counter is even is not horizontal and if is not even is horizontal 
         counter ++;
 
         switch (counter % 2)
@@ -133,11 +144,12 @@ public class DisplayShipPlace extends JFrame
             case 0 -> shipPlacer.setIsHorizontal(false);
         }
 
-        System.out.println("SE CAMBIO LA HORINETACION " + shipPlacer.getIsHorizontal());
+        System.out.println("THE ORIENTATION CHANGED SUCCESFULLY " + shipPlacer.getIsHorizontal());
 
         setOrientationText();
     }
 
+    // this stuf changes the colors of the butttons of every button
     public void updateGUI()
     {
         for (int i = 0; i < board.getSize(); i++)

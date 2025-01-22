@@ -7,6 +7,7 @@ import javax.swing.*;
 import Forms.*;
 public class BoardLogic 
 { 
+    // Declares stuff
     private Timer updateTimer;
 
     private DisplayShipPlace shipPlace;
@@ -24,22 +25,25 @@ public class BoardLogic
     public Lose loseForm = new Lose();
     public YouWin winForm = new YouWin();
 
+    // Default construcor
     public BoardLogic()
     {
-        startGame();   
     }
     
+    // Changes the title
     public void changeShipPlacerTitle() 
     {
         shipPlace.setTitle("Place Your Ships");
     }
     
+    // Changes other titles
     public void changeGridTitles()
     {
         viewShips.setTitle("Your Grid");
         attackShips.setTitle("Enemy Grid");
     }
     
+    // This runs onnce the ships are placed
     public void onShipsPlaced()
     {
         musicPlayer.stopSong();
@@ -52,12 +56,14 @@ public class BoardLogic
 
     }
 
+    // Starts the timer and every milisecond calls gameTime
     public void starTimer()
     {
         updateTimer = new Timer(1, e -> gameTime());
         updateTimer.start();
     }
     
+    // Stops the timer
     public void stopTimer()
     {
         if (updateTimer != null)
@@ -66,6 +72,7 @@ public class BoardLogic
         }
     }
 
+    // Call the display ships place once is all set call onshipplacer and starts the song
     public void startGame()
     {
         shipPlace = new DisplayShipPlace(playerBoard);
@@ -75,6 +82,7 @@ public class BoardLogic
         changeShipPlacerTitle();
     }
 
+    // Handle turns if is the player turn player attacks if not ai attacks and at the end checks if anyone wons
     public void gameTime()
     {
         if (isPlayerTurn)
@@ -90,16 +98,18 @@ public class BoardLogic
         checkWin();
     }
 
+    // Player attack updates the buttons
     public void playerAttack()
     {
-        attackShips.setButtons(true);
+        attackShips.updateButtons();
     }
     
+    // Ai attack
     public void aiAttack()
     {
         try
         {
-            // Thread.sleep(2 * 1000);    
+            Thread.sleep(2 * 1000);    
         }
         
         catch (Exception e)
@@ -107,16 +117,19 @@ public class BoardLogic
             e.printStackTrace();
         }
 
+        // Waits 2 secons and the ai attacks, disable all butons (so they cant interfiere and changes the playerturn boolean)
         ai.aiAttack();
         attackShips.setButtons(false);
         isPlayerTurn = true;
     }
 
+    // Sets the player turn
     public void setIsPlayerTurn(boolean newValue)
     {
         this.isPlayerTurn = newValue;
     }
 
+    // If on any board they win it display the form that handles that + closes the windows
     public void checkWin()
     {
         if (aiBoard.hasWon())
@@ -124,6 +137,7 @@ public class BoardLogic
             winForm.setVisible(true);
             System.out.println("THE PLAYER WINS");
             updateTimer.stop();
+            closeWindows();
         }
         
         else if (playerBoard.hasWon())
@@ -131,11 +145,20 @@ public class BoardLogic
             loseForm.setVisible(true); 
             System.out.println("THE AI WINS");
             updateTimer.stop();
+            closeWindows();
         }
     }
 
+    // Starst the game
     public void startsActualGame()
     {
         startGame();
+    }
+
+    // Close the windows
+    public void closeWindows()
+    {     
+        attackShips.dispose();
+        viewShips.dispose();
     }
 }

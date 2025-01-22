@@ -7,6 +7,7 @@ import java.awt.*;
 
 public class DisplayViewGrid extends JFrame 
 {
+    // Declares stuff
     private static final Color DEFAULTCOLOR = Color.BLUE;
     private static final Color SHIPCOLOR = Color.GREEN;
     private static final Color MISSCOLOR = new Color(0, 0, 100);
@@ -19,6 +20,7 @@ public class DisplayViewGrid extends JFrame
     public String[][] currentBoard;
     public Board board;
 
+    // Constructor
     public DisplayViewGrid(Board board) 
     {
         this.board = board;
@@ -27,6 +29,7 @@ public class DisplayViewGrid extends JFrame
         initFrame();
     }
     
+    // Creates the Jframe
     public void initFrame()
     {
         setSize(500, 500);
@@ -37,6 +40,8 @@ public class DisplayViewGrid extends JFrame
     }
 
 
+
+    // Creates each button and add it to the grid layer
     public void initButtons()
     {
         setLayout(new GridLayout(board.getSize(), board.getSize()));
@@ -60,12 +65,14 @@ public class DisplayViewGrid extends JFrame
         updateGUI();
     }
 
+    // Starts the timer and every half a seconds call updateGUI
     public void starTimer()
     {
-        updateTimer = new Timer(1000, e -> updateGUI());
+        updateTimer = new Timer(500, e -> updateGUI());
         updateTimer.start();
     }
     
+    // Stops the timer
     public void stopTimer()
     {
         if (updateTimer != null)
@@ -74,6 +81,7 @@ public class DisplayViewGrid extends JFrame
         }
     }
 
+    // For every button it checkes the postion on the array and changes the color in base of that
     public void updateGUI()
     {
         for (int i = 0; i < board.getSize(); i++)
@@ -93,6 +101,7 @@ public class DisplayViewGrid extends JFrame
         }   
     } 
 
+    // Disables every button
     public void disabelButtons()
     {
         for (JButton[] jbuttons : buttonsInGrid)

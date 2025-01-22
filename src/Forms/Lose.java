@@ -99,7 +99,9 @@ public class Lose extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void playAgainButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playAgainButtonActionPerformed
+        this.dispose();
         Main main = new Main();
+        main.playAgain();
     }//GEN-LAST:event_playAgainButtonActionPerformed
 
     private void quitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitButtonActionPerformed

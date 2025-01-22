@@ -89,6 +89,8 @@ public class YouWin extends javax.swing.JFrame {
     private void playAgainButtonActionPerformed(java.awt.event.ActionEvent evt) 
     {//GEN-FIRST:event_playAgainButtonActionPerformed
         Main main = new Main();
+        main.playAgain();
+        this.dispose();
     }//GEN-LAST:event_playAgainButtonActionPerformed
 
     private void quitButtonActionPerformed(java.awt.event.ActionEvent evt) 

@@ -7,6 +7,7 @@ import java.util.*;
 
 public class AdvanceAi 
 {
+    // Declare initial stuff
     private Board board;
     private Board playerBoard;
     private PlaceShips shipPlacer;
@@ -16,11 +17,11 @@ public class AdvanceAi
 
     private Random random = new Random();
     
-
     private int randomX = 0;
     private int randomY = 0;
     private boolean randomHorizontal = false;
 
+    // Constructor
     public AdvanceAi(Board thisBoard, Board playerBoard)  
     {
         this.board = thisBoard;
@@ -28,6 +29,7 @@ public class AdvanceAi
         this.shipPlacer = new PlaceShips(board);
     }
 
+    // Set ships while they arent already placed
     public void aiSetShips()
     {
         while (shipPlacer.getShipsLeft() > 0)
@@ -41,15 +43,18 @@ public class AdvanceAi
         }
     }
 
+    // Attack
     public void aiAttack()
     {
         determineHitChange();
     }
 
+    // Determines hit 
     public void aiHit() 
     {
         playerShipsCoordinates = playerBoard.getShipCoordinates();
         
+        // Gets all the positions of the ships
         if (playerBoard.shipsLeft > 0) 
         {
             ArrayList<Integer> selectedShip;
@@ -57,6 +62,7 @@ public class AdvanceAi
             int x = 0;
             int y = 0;
             
+            // Select a random postition
             do
             {
                 int randomShipIndex = random.nextInt(playerShipsCoordinates.size());
@@ -70,8 +76,10 @@ public class AdvanceAi
                 
             }
 
+            // If the position is hit or destroyed it tries again
             while (playerBoard.getBoardPosition(x, y).equals("HIT") || playerBoard.getBoardPosition(x, y).equals("DESTROYED"));
 
+            // Attacks 
             playerBoard.attack(x, y);
             
             System.out.println("AI HIT COORDINATE: (" + x + ", " + y + ")");
@@ -88,6 +96,7 @@ public class AdvanceAi
     public void aiMiss()
     {
 
+        // Miss just get random coordinates and if they arent default they re run it
         do 
         {
             randomX = random.nextInt(board.getSize());
@@ -106,18 +115,15 @@ public class AdvanceAi
 
     public void determineHitChange() 
     {
+        // If the magic random number is less or equal to the magic number it attacks if not it miss
         int magicNumber = 1;
 
         if (hitChange <= 0)
         {
             hitChange += 5;
-            System.out.println("MULTIPLY BY -1");
         }
 
         int randomHitChange = random.nextInt(hitChange) + 1;
-
-        System.out.println("CURRENT HIT CHANCE: " + hitChange);
-        System.out.println("RANDOM HIT CHANGE: " + randomHitChange);
 
         if (randomHitChange <= magicNumber)
         {
