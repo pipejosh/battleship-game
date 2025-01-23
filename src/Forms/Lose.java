@@ -27,12 +27,12 @@ public class Lose extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
+        //Labels and Buttons
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         playAgainButton = new javax.swing.JButton();
         quitButton = new javax.swing.JButton();
-
+        //sets labels and buttons
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Impact", 0, 48)); // NOI18N
@@ -97,13 +97,13 @@ public class Lose extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    //Creates a play again button that starts a game again
     private void playAgainButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playAgainButtonActionPerformed
         this.dispose();
         Main main = new Main();
         main.playAgain();
     }//GEN-LAST:event_playAgainButtonActionPerformed
-
+    //Creates a quit button that close a game
     private void quitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitButtonActionPerformed
         System.exit(0);
     }//GEN-LAST:event_quitButtonActionPerformed

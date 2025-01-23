@@ -27,11 +27,11 @@ public class YouWin extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
+        //creates buttons and label
         playAgainButton = new javax.swing.JButton();
         quitButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-
+        //sets buttons and label
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         playAgainButton.setBackground(new java.awt.Color(137, 87, 64));
@@ -85,14 +85,14 @@ public class YouWin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    //Play again button that restarts a game
     private void playAgainButtonActionPerformed(java.awt.event.ActionEvent evt) 
     {//GEN-FIRST:event_playAgainButtonActionPerformed
         Main main = new Main();
         main.playAgain();
         this.dispose();
     }//GEN-LAST:event_playAgainButtonActionPerformed
-
+    //Quit button that closes a game
     private void quitButtonActionPerformed(java.awt.event.ActionEvent evt) 
     {//GEN-FIRST:event_quitButtonActionPerformed
         System.exit(0);

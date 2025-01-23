@@ -25,13 +25,13 @@ public class Settings extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
+        //Creates Labels, Buttons and slider
         MusicSlider = new javax.swing.JSlider();
         SFXSlider = new javax.swing.JSlider();
         MusicLabel = new javax.swing.JLabel();
         SFXLabel = new javax.swing.JLabel();
         SettingsLabel = new javax.swing.JLabel();
-
+        //Sets Labels, Buttons and Slider
         MusicLabel.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
         MusicLabel.setText("Music");
 

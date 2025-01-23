@@ -31,13 +31,13 @@ public class MainMenu extends JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
+        //Creates buttons, labels and other things
         jSlider1 = new javax.swing.JSlider();
         SettingButton = new javax.swing.JButton();
         PlayButton = new javax.swing.JButton();
         NameLabel = new javax.swing.JLabel();
         ExitButton1 = new javax.swing.JButton();
-
+        //Sets labels, buttons and other things
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 153, 204));
         setSize(new java.awt.Dimension(500, 500));
@@ -106,12 +106,14 @@ public class MainMenu extends JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Play button that starts a game
     private void PlayButtonActionPerformed(java.awt.event.ActionEvent evt) 
     {//GEN-FIRST:event_PlayButtonActionPerformed
         game.startsActualGame();
         this.dispose();
     }//GEN-LAST:event_PlayButtonActionPerformed
 
+    //Button that close a program
     private void ExitButton1ActionPerformed(java.awt.event.ActionEvent evt) 
     {//GEN-FIRST:event_ExitButton1ActionPerformed
         System.exit(0);
