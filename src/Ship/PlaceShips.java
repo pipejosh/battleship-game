@@ -129,7 +129,7 @@ public class PlaceShips
         return true;
     }
 
-    Sets is horizontal to a new value
+    // Sets is horizontal to a new value
     public void setIsHorizontal(boolean newOrientation)
     {
         this.isHorizontal = newOrientation;
