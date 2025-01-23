@@ -85,7 +85,7 @@ public class AdvanceAi
             
             System.out.println("AI HIT COORDINATE: (" + x + ", " + y + ")");
 
-            hitChange++;
+            hitChange +=2;
         }
 
         else 
