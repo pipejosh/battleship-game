@@ -121,7 +121,7 @@ public class AdvanceAi
 
         if (hitChange <= 0)
         {
-            hitChange += 10;
+            hitChange += 7;
         }
 
         int randomHitChange = random.nextInt(hitChange) + 1;
