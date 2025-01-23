@@ -1,11 +1,13 @@
 package Ship;
 
+// Imports all necesary stuff
 import java.util.ArrayList;
 
 import Board.*;
 
 public class PlaceShips 
 {
+    // Declares initial stuff
     private Board board;
     private Ship[] ships;
     
@@ -15,6 +17,7 @@ public class PlaceShips
     public Ship currentShip;
     public Ship nextShip;
 
+    // Constructor
     public PlaceShips(Board board) 
     {
         this.board = board;
@@ -126,26 +129,31 @@ public class PlaceShips
         return true;
     }
 
+    Sets is horizontal to a new value
     public void setIsHorizontal(boolean newOrientation)
     {
         this.isHorizontal = newOrientation;
     }
 
+    // Gets is horizontal
     public boolean getIsHorizontal() 
     {
         return isHorizontal;
     }
 
+    // Gets the ships left
     public int getShipsLeft()
     {
         return shipsLeft;
     }
 
+    // Gets the ship name
     public String getShipName()
     {
         return currentShipName;
     }
 
+    // Gets the next ship
     public Ship getNextShip()
     {
         if (shipsLeft - 1 < 0)
@@ -153,6 +161,7 @@ public class PlaceShips
             return null;
         }
 
+        // For the array return the ships that are left - 1
         Ship nextShip = ships[shipsLeft - 1];
 
         return nextShip;
