@@ -14,7 +14,7 @@ public class AdvanceAi
     private PlaceShips shipPlacer;
     private ArrayList<ArrayList<Integer>> playerShipsCoordinates = new ArrayList<ArrayList<Integer>>();
 
-    private int hitChange = 5;
+    private int hitChange = 10;
 
     private Random random = new Random();
     
@@ -121,7 +121,7 @@ public class AdvanceAi
 
         if (hitChange <= 0)
         {
-            hitChange += 7;
+            hitChange += 10;
         }
 
         int randomHitChange = random.nextInt(hitChange) + 1;
