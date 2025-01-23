@@ -1,3 +1,16 @@
+/*
+ * TEAMMATES
+ * 
+ *  Lizzie
+ *  Yaroslav
+ *  Cristopher 
+ * 
+*/
+
+// START JANUARY 6 2025
+// END JANUARY 23 2025
+
+
 package Main;
 
 // Imports all necesary stuff

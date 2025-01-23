@@ -27,6 +27,7 @@ public class PlayMusic
         String actualGame = "GameTheme.wav";
         String soundPath = "";
 
+        // Depends the value the sound path changes
         switch (song)
         {
             case 0 -> soundPath = boatPlacement;
