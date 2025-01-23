@@ -32,10 +32,13 @@ public class PlaceShips
         this.currentShipName = ships[ships.length - shipsLeft].getShipName();
     }
 
+    // The method that actually places the ships
     public void placeShips(int x, int y) 
     {
+        // Ships coordinates        
         ArrayList<Integer> currentShipCoordinate = new ArrayList<Integer>();
 
+        // Guard claus 
         if (shipsLeft == 0) 
         {
             System.out.println("NO MORE SHIPS LEFT");
@@ -44,15 +47,18 @@ public class PlaceShips
 
         currentShip = ships[shipsLeft - 1];
 
+        // Horizontal or not
         if (isHorizontal)
         {
+            // If can be placed 
             if (canPlaceShip(x, y))
             {
-
+                // Place the ship
                 for (int i = 0; i < currentShip.getShipSize(); i++) 
                 {
                     board.setShip(x + i, y);
     
+                    // Add it to the coordinates
                     currentShipCoordinate.add(x + i);
                     currentShipCoordinate.add(y);
                     
@@ -60,6 +66,7 @@ public class PlaceShips
                 }
             }
 
+            // If cant be place return nothing
             else
             {
                 return;
@@ -67,6 +74,7 @@ public class PlaceShips
             
         } 
 
+        // If is not horizontal do the same but in the Y axis
         else 
         {
 
@@ -89,19 +97,25 @@ public class PlaceShips
             }
         }
 
+        // Set the coordinates and rest the ships left
+
         board.setCoordinates(currentShipCoordinate);
         shipsLeft--;
     }
 
+    // This method returns true or false if a ship can be placed on (x, y)
     public boolean canPlaceShip(int x, int y)
     {
+        // If is horizontral
         if (isHorizontal)
         {
+            // If the ship in the X axis is bigger return false
             if (x + currentShip.getShipSize() > board.getSize())
             {
                 return false;
             }
 
+            // Place the ships on the x axis
             for (int i = 0; i < currentShip.getShipSize(); i++)
             {
                 if (board.getBoardPosition(x + i, y).equals("SHIP"))
@@ -113,11 +127,13 @@ public class PlaceShips
 
         else 
         {
+            // If the ship in the Y axis is bigger return false
             if (y + currentShip.getShipSize() > board.getSize())
             {
                 return false;
             }
 
+            // Place the ships on the y axis
             for (int i = 0; i < currentShip.getShipSize(); i++)
             {
                 if (board.getBoardPosition(x, y + i).equals("SHIP"))
@@ -126,6 +142,8 @@ public class PlaceShips
                 }
             }
         }
+
+        // If reach this part means it can be placed
         return true;
     }
 

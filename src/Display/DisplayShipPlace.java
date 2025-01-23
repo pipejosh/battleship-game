@@ -87,7 +87,7 @@ public class DisplayShipPlace extends JFrame
         addButtonsMouseListener();
     }
 
-    // Add an action listener for every button to do the same except the change orientation one that one has a different action
+    // Adds an action listener for every button to do the same except the change orientation one that one has a different action
     public void addButtonsActionListener()
     {
         for (int i = 0; i < board.getSize(); i++) 
@@ -158,6 +158,7 @@ public class DisplayShipPlace extends JFrame
             {
                 switch (currentBoard[i][j])
                 {
+                    // Depends on the value changes different colors
                     case "DEFAULT" -> buttonsInGrid[i][j].setBackground(DEFAULTCOLOR);
                     case "SHIP" -> buttonsInGrid[i][j].setBackground(SHIPCOLOR);
                     default -> buttonsInGrid[i][j].setBackground(UNKNOWNCOLOR);
@@ -166,22 +167,28 @@ public class DisplayShipPlace extends JFrame
         }   
     } 
 
+    //add mouse listener
     public void addButtonsMouseListener()
     {
+        // For every button in the array
         for (int i = 0; i < board.getSize(); i++) 
         {
             for (int j = 0; j < board.getSize(); j++) 
             {
                 final int row = i;
                 final int col = j;
+
+                // Add a mouse listener cuz why not
                 buttonsInGrid[row][col].addMouseListener(new MouseAdapter() 
                 {
+                    // Override mouse entered method to custom method in this case previewShipPlaced
                     @Override
                     public void mouseEntered(MouseEvent e) 
                     {
                         previewShipPlaced(row, col, shipPlacer.getIsHorizontal());
                     }
 
+                    // Override mouse exit method to custom in this case updateGUI
                     @Override
                     public void mouseExited(MouseEvent e)
                     {
@@ -190,48 +197,57 @@ public class DisplayShipPlace extends JFrame
                 });
             }
         }
-
     }
 
+    //This method previews the ships placed
     public void previewShipPlaced(int x, int y, boolean isHorizontal) {
         
+        // Get an instance of the next ship
         Ship nextShip = shipPlacer.getNextShip();
+
+        // If it is null message to the terminal
         if (nextShip == null) 
         {
-            System.out.println("No current ship to preview.");
+            System.out.println("NO SHIPS LEFT");
             return;
         }
 
+        // Get the ship size
         int shipSize = nextShip.getShipSize();
 
+        // If it is horizontal
         if (isHorizontal) 
         {
+            // Try to preview unless is out of bounds
             if (x + shipSize > board.getSize()) 
             {
-                System.out.println("Preview out of bounds horizontally.");
+                System.out.println("PREVIEW OUT OF BOUNDS");
                 return;
             }
 
+            // If it is in bounds but theres a ship
             for (int i = 0; i < shipSize; i++) 
             {
                 if (board.getBoardPosition(x + i, y).equals("SHIP")) 
                 {
-                    System.out.println("Cannot preview here: collision detected.");
+                    System.out.println("ERROR SHIP ALREADY THERE");
                     return;
                 }
             }
 
+            // If it is done then just change the color or that buttons
             for (int i = 0; i < shipSize; i++) 
             {
                 buttonsInGrid[x + i][y].setBackground(SHIPCOLOR);
             }
         } 
 
+        // If it is not horizontal do the same but on the Y axis
         else 
         {
             if (y + shipSize > board.getSize()) 
             {
-                System.out.println("Preview out of bounds vertically.");
+                System.out.println("PREVIEW OUT OF BOUNDS");
                 return;
             }
 
@@ -239,7 +255,7 @@ public class DisplayShipPlace extends JFrame
             {
                 if (board.getBoardPosition(x, y + i).equals("SHIP")) 
                 {
-                    System.out.println("Cannot preview here: collision detected.");
+                    System.out.println("ERROR SHIP ALREADY THERE");
                     return;
                 }
             }
@@ -251,11 +267,13 @@ public class DisplayShipPlace extends JFrame
         }
     }
 
+    // Creates the callback action
     public void setOnShipsPlacedCallback(Runnable callback)
     {
         this.onShipsPlacedCallback = callback;
     }
 
+    // Disables every button of the array
     public void disabelButtons()
     {
         for (JButton[] jButtons : buttonsInGrid) 
@@ -267,6 +285,7 @@ public class DisplayShipPlace extends JFrame
         }
     }
 
+    //finishes the ship placement
     public void finishShipPlacement()
     {
         disabelButtons();
