@@ -1,5 +1,6 @@
 package Ai;
 
+// Imports all necesary stuff
 import Board.*;
 import Ship.PlaceShips;
 

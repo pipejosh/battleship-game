@@ -1,5 +1,6 @@
 package Board;
 
+// Imports all necesary stuff
 import Ai.*;
 import Display.*;
 import MusicScript.*;

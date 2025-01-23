@@ -1,6 +1,6 @@
 package Display;
 
-
+// Imports all necesary stuff
 import Board.*;
 import Ship.*;
 import javax.swing.*;

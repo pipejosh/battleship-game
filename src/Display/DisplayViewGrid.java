@@ -1,5 +1,6 @@
 package Display;
 
+// Imports all necesary stuff
 import Board.Board;
 
 import javax.swing.*;

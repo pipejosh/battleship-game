@@ -1,5 +1,6 @@
 package Main;
 
+// Imports all necesary stuff
 import Board.*;
 
 public class Main 
