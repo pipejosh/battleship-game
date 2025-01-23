@@ -111,7 +111,7 @@ public class BoardLogic
     {
         try
         {
-            Thread.sleep(2 * 1000);    
+            Thread.sleep(1500);    
         }
         
         catch (Exception e)
