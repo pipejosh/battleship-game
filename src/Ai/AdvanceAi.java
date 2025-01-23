@@ -124,7 +124,7 @@ public class AdvanceAi
             hitChange += 10;
         }
 
-        int randomHitChange = random.nextInt(hitChange) + 1;
+        int randomHitChange = random.nextInt(hitChange) + 5;
 
         if (randomHitChange <= magicNumber)
         {
