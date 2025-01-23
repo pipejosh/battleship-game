@@ -110,7 +110,7 @@ public class AdvanceAi
 
         System.out.println("AI MISSED AT: (" + randomX + ", " + randomY + ")"); 
 
-        hitChange -= 2;
+        hitChange --;
     }
 
 
