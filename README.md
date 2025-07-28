@@ -5,8 +5,7 @@ A graphical implementation of the classic Battleship game written in Java. This 
 ## Features
 
 - Fully functional GUI for playing the game
-- Two-player gameplay (local)
-- Customizable grid size
+- Single player mode agains an AI
 - Multiple ship types with different sizes
 - Gameplay mechanics (guessing, hitting, and sinking ships)
 - Intuitive interface for placing ships and making guesses
